@@ -1,0 +1,79 @@
+baseURL: https://ferraridavide.github.io/
+languageCode: en-us
+title: Davide Ferrari
+paginate: 5
+theme: "PaperMod"
+
+enableRobotsTXT: true
+enableEmoji: true
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
+
+params:
+  env: production
+  title: Davide Ferrari
+  description: "Davide Ferrari's personal portfolio website and blog"
+  keywords: [Blog, Portfolio, Software, dotnet, Flutter]
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  comments: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    #favicon: "<link / abs url>"
+    #favicon16x16: "<link / abs url>"
+    #favicon32x32: "<link / abs url>"
+    #apple_touch_icon: "<link / abs url>"
+    #safari_pinned_tab: "<link / abs url>"
+
+  profileMode:
+      enabled: true
+      title: Davide Ferrari
+      subtitle: "Software developer"
+      imageUrl: "https://avatars.githubusercontent.com/u/23432883"
+      
+
+  socialIcons:
+        - name: twitter
+          url: "https://twitter.com/frrdavide"
+        - name: instagram
+          url: "https://www.instagram.com/davideferrari.py"
+        - name: telegram
+          url: "https://t.me/ferraridavide"
+        - name: github
+          url: "https://github.com/ferraridavide"
+        
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+menu:
+  main:
+    - name: Blog
+      url: posts
+      weight: 5
+    - name: Archive
+      url: archives
+      weight: 10
+    - name: Tags
+      url: tags/
+      weight: 15
+    - name: Search
+      url: search/
+      weight: 20
