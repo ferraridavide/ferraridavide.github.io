@@ -14,7 +14,7 @@ I took all of the photos from the many hard drives i collected over the years, w
 
 Only one thing left to do: separate my private photos from the ones i want to share with my family’s account, i though this would be simple enough, i just organize the photos in albums and then move the albums to the desired location (user’s personal space or shared space), bam, done!
 
-Sadly, as it turns out, the Synology Photo’s web interface and application allow you to move a selection of photos from personal space to shared space only if the selection is made from the timeline or folder view, the option is not available in the album views! 
+Sadly, as it turns out, the Synology Photo’s web interface and application allow you to move a selection of photos from personal space to shared space **only if the selection is made from the timeline or folder view, the option is not available in the album views!** 
 Also, moving photos this way wouldn’t preserve the folder structure i made as all the files are moved to the same folder, what a bummer!
 
 ![Timeline view selection on the left, Album view selection on the right](https://raw.githubusercontent.com/ferraridavide/ferraridavide.github.io/main/content/posts/accessing-synology-dsm-database/images/menu_difference.png)
