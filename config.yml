@@ -71,9 +71,6 @@ menu:
     - name: Archive
       url: archives
       weight: 10
-    - name: Tags
-      url: tags/
+    - name: Skills
+      url: skills/
       weight: 15
-    - name: Search
-      url: search/
-      weight: 20
