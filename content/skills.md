@@ -2,7 +2,6 @@
 title: "Skills"
 ShowBreadCrumbs: false
 ---
-
 **C#**  
 I am highly proficient in C#, with 10 years of experience using the language. I have a deep understanding of the most advanced concepts of the language and am comfortable navigating complex projects and solutions. My knowledge of C# has allowed me to create a wide range of applications, from desktop software to web applications and services. I am confident in my ability to write robust, high-quality code in C#.
 
@@ -13,7 +12,7 @@ I have experience using WPF to create professional user interfaces for desktop a
 I am proficient in building web services using ASP.NET Core and have experience with creating and consuming web APIs, using Entity Framework Core for data access and JWT Tokens for authentication. Additionally, I'm experienced with various features of ASP.NET Core like routing, middleware, dependency injection, and configuration that enable me to build scalable and high-performance web services.
 
 **MSBuild**  
-I have used MSBuild to create specialized tasks and have been able to navigate MSBuild logs. With MSBuild, I am able to automate the build process of applications and customize the build process to meet specific needs.
+I am able to use MSBuild to customize and automate the build process. I can create specialized tasks to manipulate the build process to fit the needs of a project. I am able to navigate MSBuild logs and troubleshoot any issues that may arise during the build process.
 
 **Blazor**  
 I have used Blazor to create modular single page applications. With Blazor, I am able to build web applications using C# and Razor syntax, allowing me to create interactive and responsive applications that run in the browser.

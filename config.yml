@@ -18,7 +18,7 @@ params:
   title: Davide Ferrari
   description: "Davide Ferrari's personal portfolio website and blog"
   keywords: [Blog, Portfolio, Software, dotnet, Flutter]
-  # images: ["<link or path of image for opengraph, twitter-cards>"]
+  images: ["https://avatars.githubusercontent.com/u/23432883"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
 
@@ -29,10 +29,10 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    #favicon: "<link / abs url>"
-    #favicon16x16: "<link / abs url>"
-    #favicon32x32: "<link / abs url>"
-    #apple_touch_icon: "<link / abs url>"
+    favicon: "/favicon.png"
+    favicon16x16: "/favicon16.png"
+    favicon32x32: "/favicon32.png"
+    apple_touch_icon: "/clipimage.png"
     #safari_pinned_tab: "<link / abs url>"
 
   profileMode:
