@@ -15,7 +15,7 @@ I am proficient in building web services using ASP.NET Core and have experience 
 With MSBuild, I am able to customize and automate the build process by creating specialized build tasks that fit the needs of a project. I am able to navigate MSBuild logs and troubleshoot any issues that may arise during the build process.
 
 **Blazor**  
-I have experience using Blazor to create modular single-page applications, I am able to build web applications using C# and Razor syntax and I am familiar with it's component lifecycle and JavaScript interop features, allowing me to create complex and dynamic applications that run seamlessly in the browser.
+I have experience using Blazor to create modular single-page applications, I am able to build web applications using C# and Razor syntax and I am familiar with its component lifecycle and JavaScript interop features, allowing me to create complex and dynamic applications that run seamlessly in the browser.
 
 **OpenAPI Specification and NSwag**  
 I am familiar with the OpenAPI Specification (formerly known as Swagger) and have maintained a WCF service to OpenAPI conversion tool. I am able to design and document APIs using a standardized format, allowing for easy integration and consumption of APIs by external clients. My experience with the WCF service to OpenAPI conversion tool has allowed me to assist in the process of migrating existing APIs to the OpenAPI standard. I am also familiar with NSwag and similar tools that allow me to automatically generate client code for accessing APIs, saving time and effort in the development process.
