@@ -3,19 +3,19 @@ title: "Skills"
 ShowBreadCrumbs: false
 ---
 **C#**  
-I am highly proficient in C#, with 10 years of experience using the language. I have a deep understanding of the most advanced concepts of the language and am comfortable navigating complex projects and solutions. My knowledge of C# has allowed me to create a wide range of applications, from desktop software to web applications and services. I am confident in my ability to write robust, high-quality code in C#.
+I am highly proficient in C# and possess a deep understanding of it's most advanced concepts, I am comfortable navigating complex projects and solutions. My knowledge of C# has allowed me to create a wide range of applications, from desktop software to web applications and services. I am confident in my ability to write robust, high-quality code in C#.
 
 **WPF**  
-I have experience using WPF to create professional user interfaces for desktop applications. I am able to create rich and interactive user interfaces, utilizing features such as data binding, control templates, and animation. My experience with WPF has allowed me to build applications with sleek and modern interfaces.
+I have experience using WPF to create professional user interfaces for business-oriented desktop applications. I am able to create rich and interactive user interfaces, utilizing features such as data binding, control templates and animation. My experience with WPF has allowed me to build applications with sleek and modern interfaces.
 
 **ASP.NET Core**  
 I am proficient in building web services using ASP.NET Core and have experience with creating and consuming web APIs, using Entity Framework Core for data access and JWT Tokens for authentication. Additionally, I'm experienced with various features of ASP.NET Core like routing, middleware, dependency injection, and configuration that enable me to build scalable and high-performance web services.
 
 **MSBuild**  
-I am able to use MSBuild to customize and automate the build process. I can create specialized tasks to manipulate the build process to fit the needs of a project. I am able to navigate MSBuild logs and troubleshoot any issues that may arise during the build process.
+With MSBuild, I am able to customize and automate the build process by creating specialized build tasks that fit the needs of a project. I am able to navigate MSBuild logs and troubleshoot any issues that may arise during the build process.
 
 **Blazor**  
-I have used Blazor to create modular single page applications. With Blazor, I am able to build web applications using C# and Razor syntax, allowing me to create interactive and responsive applications that run in the browser.
+I have experience using Blazor to create modular single-page applications, I am able to build web applications using C# and Razor syntax and I am familiar with it's component lifecycle and JavaScript interop features, allowing me to create complex and dynamic applications that run seamlessly in the browser.
 
 **OpenAPI Specification and NSwag**  
 I am familiar with the OpenAPI Specification (formerly known as Swagger) and have maintained a WCF service to OpenAPI conversion tool. I am able to design and document APIs using a standardized format, allowing for easy integration and consumption of APIs by external clients. My experience with the WCF service to OpenAPI conversion tool has allowed me to assist in the process of migrating existing APIs to the OpenAPI standard. I am also familiar with NSwag and similar tools that allow me to automatically generate client code for accessing APIs, saving time and effort in the development process.
@@ -28,9 +28,6 @@ I have used Git for version control on multiple software development projects. W
 
 **Docker**  
 I have used Docker and am familiar with the concept of containerization. With Docker, I am able to package applications and their dependencies into lightweight containers that can be easily deployed and run on any host machine. This allows for greater portability and consistency in the development and deployment process. My understanding of containerization allows me to understand the benefits and potential uses of Docker and other containerization technologies.
-
-**Linux**  
-I have used the Linux terminal and am comfortable using command line tools. With my experience using the terminal, I am able to navigate and interact with the operating system, perform tasks such as file manipulation and system administration, and utilize a wide range of command line tools and utilities. My comfort using the terminal allows me to effectively utilize the power and flexibility of the command line in various projects.
 
 **Redis**  
 I have experience using Redis, an in-memory data structure store that can be used as a database, cache, and message broker. With Redis, I am able to store and retrieve data quickly, implement caching to improve the performance of applications, and facilitate communication between processes through the use of its message brokering capabilities. My experience with Redis has allowed me to utilize its powerful features in various projects to improve the scalability and efficiency of applications.
@@ -59,3 +56,6 @@ I am seeking to expand my knowledge of Node.js and Express, this would allow me 
 
 **React and Next.js**  
 I already have some experience creating basic React applications and am familiar with its core concepts, including building user interfaces using reusable components. However, I am interested in delving deeper into React and Next.js in order to improve the performance of my applications. Specifically, I want to explore techniques such as server-side rendering and partial hydration, which can help speed up the loading time of a page, provide a better user experience, and potentially increase SEO for the website.
+
+**.NET MAUI**  
+I am eager to combine what I've learned developing mobile applications with Flutter and my knowledge of XAML gained from writing WPF applications by exploring the capabilities of .NET MAUI. I am interested in learning how to use MAUI to create multi-platform mobile applications with a single codebase, using XAML (or MauiReactor/Blazor Bindings) for designing user interfaces.
