@@ -3,7 +3,7 @@ title: "Skills"
 ShowBreadCrumbs: false
 ---
 **C#**  
-I am highly proficient in C# and possess a deep understanding of it's most advanced concepts, I am comfortable navigating complex projects and solutions. My knowledge of C# has allowed me to create a wide range of applications, from desktop software to web applications and services. I am confident in my ability to write robust, high-quality code in C#.
+I am highly proficient in C# and possess a deep understanding of its most advanced concepts, I am comfortable navigating complex projects and solutions. My knowledge of C# has allowed me to create a wide range of applications, from desktop software to web applications and services. I am confident in my ability to write robust, high-quality code in C#.
 
 **WPF**  
 I have experience using WPF to create professional user interfaces for business-oriented desktop applications. I am able to create rich and interactive user interfaces, utilizing features such as data binding, control templates and animation. My experience with WPF has allowed me to build applications with sleek and modern interfaces.
