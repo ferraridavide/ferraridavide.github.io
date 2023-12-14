@@ -75,5 +75,5 @@ menu:
       url: skills/
       weight: 15
     - name: PGP
-      url: /static/davideferrari.asc
+      url: /davideferrari.asc
       weight: 20
