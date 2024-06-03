@@ -68,9 +68,6 @@ menu:
     - name: Blog
       url: posts
       weight: 5
-    - name: Archive
-      url: archives
-      weight: 10
     - name: Skills
       url: skills/
       weight: 15
