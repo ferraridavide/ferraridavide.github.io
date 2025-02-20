@@ -2,9 +2,10 @@
 title: "Aule UniPV: A simple way to find an empty classroom"
 date: 2024-10-04T08:36:40Z
 tags: ["webapp", "react"]
+cover:
+  image: images/hero.jpg
+  relative: true
 ---
-
-![Hero image](https://raw.githubusercontent.com/ferraridavide/ferraridavide.github.io/main/content/posts/aule-unipv-webapp/images/hero.jpg)
 
 Since starting university, my class schedule has been all over the place, often leaving me with random gaps to fill. I’d end up wandering through the hallways of *Nave*, moving from building to building, trying to find an empty classroom where my friends and I could settle in.
 
