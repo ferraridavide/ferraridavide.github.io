@@ -3,7 +3,7 @@ title: "My Time at Maxidata"
 date: 2025-02-28T15:47:22Z
 publishDate: 2025-02-20T15:47:22Z
 cover:
-  image: images/hero.jpg
+  image: images/cover.jpg
   relative: true
 ---
 
