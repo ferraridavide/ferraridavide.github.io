@@ -43,14 +43,16 @@ params:
       
 
   socialIcons:
-        - name: twitter
-          url: "https://twitter.com/frrdavide"
+        - name: x
+          url: "https://x.com/frrdavide"
         - name: instagram
           url: "https://www.instagram.com/davideferrari.py"
         - name: telegram
           url: "https://t.me/ferraridavide"
         - name: github
           url: "https://github.com/ferraridavide"
+        - name: linkedin
+          url: "https://www.linkedin.com/in/frrdavide/"
         
   # for search
   # https://fusejs.io/api/options.html
