@@ -43,7 +43,7 @@ params:
       
 
   socialIcons:
-        - name: x
+        - name: twitter
           url: "https://x.com/frrdavide"
         - name: instagram
           url: "https://www.instagram.com/davideferrari.py"
