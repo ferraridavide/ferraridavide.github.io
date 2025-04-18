@@ -1,7 +1,8 @@
 // JavaScript
 const ENDPOINT = 'https://spotify-now-playing.xthehacker2000x.workers.dev/';
 const widget    = document.getElementById('now-playing');
-const cover     = document.getElementById('cover');
+const coverBlur     = document.getElementById('cover');
+const cover     = document.getElementById('coverBlur');
 const smallText = document.getElementById('small-text');
 const titleEl   = document.getElementById('title');
 const artistEl  = document.getElementById('artist');
@@ -34,11 +35,12 @@ async function fetchNowPlaying(){
 
     // Case 2: track found – show & populate
     widget.classList.remove('hidden');
-    smallText.innerHTML = `I'm&nbsp;currently&nbsp;listening:&nbsp;<br><strong>${data.title}</strong> by ${data.artists}`;
+    smallText.innerHTML = `I'm&nbsp;currently&nbsp;listening:&nbsp;<strong>${data.title}</strong>`;
     titleEl.textContent  = data.title;
     artistEl.textContent = data.artists;
     durationEl.textContent = fmt(data.duration_ms);
     cover.style.backgroundImage = `url('${data.albumArt}')`;
+coverBlur.style.backgroundImage = `url('${data.albumArt}')`;
     songLinks.forEach(link => link.href = data.url);
 
     // progress handling
