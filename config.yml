@@ -35,15 +35,13 @@ params:
     apple_touch_icon: "/clipimage.png"
     #safari_pinned_tab: "<link / abs url>"
 
-  profileMode:
-      enabled: true
-      title: Davide Ferrari
-      subtitle: "Software developer"
-      imageUrl: "https://avatars.githubusercontent.com/u/23432883"
+  homeInfoParams:
+    Title: Davide Ferrari
+    Content: obsessed software dev with a messed up sleep cycle
       
 
   socialIcons:
-        - name: twitter
+        - name: x
           url: "https://x.com/frrdavide"
         - name: instagram
           url: "https://www.instagram.com/davideferrari.py"
@@ -67,9 +65,6 @@ params:
 
 menu:
   main:
-    - name: Blog
-      url: posts
-      weight: 5
     - name: Skills
       url: skills/
       weight: 15
