@@ -41,6 +41,8 @@ I vividly remember the conversation we had about the transcoder. We were discuss
 
 That shift, from thinking about where our code runs to how it runs, was pivotal. It unlocked a whole new way of designing and building applications, a truly cloud-native approach. It was like taking off a heavy backpack we didn't even realize we were carrying. RabbitMQ, running on a dedicated server (even a virtual one), suddenly seemed archaic compared to the elegance of an event-driven model. Using a combination of S3 event notifications triggering SNS messages, which then invoked Lambda functions to launch ECS Fargate tasks for transcoding, transcription (AWS Transcribe), and content moderation (AWS Rekognition), became our new, elegant, and scalable solution. A video upload to S3 would set off this chain reaction, effortlessly scaling to handle any number of uploads concurrently. It was serverless in action, and it changed everything.
 
+![infrastructure](images/infra.png)
+
 ## The Unforeseen Hurdles: Tales from the Trenches
 
 No cloud computing project comes without its thunderstorms. A few stand out:
@@ -77,3 +79,5 @@ Presenting Sunomi at the [AWS User Group in Milan](https://www.meetup.com/awsuse
 Sunomi is more than just a video platform. It's a demonstration of what four dedicated and hard-working students can accomplish when they combine their skills, passion, and a healthy dose of caffeine. We started with little AWS experience, but we finished with a working platform, a wealth of knowledge, a profound appreciation for the power and complexity of cloud computing, and a shared sense of accomplishment that will stay with us long after graduation.
 
 You can find Sunomi at [sunomi.eu](https://sunomi.eu/), but just in case we ever forget to renew our fancy $3/year domain, it'll always be hanging out at [davide.im/sunomi](https://davide.im/sunomi/)
+
+For more details, check out [github.com/ferraridavide/sunomi](https://github.com/ferraridavide/sunomi)
