@@ -1,0 +1,8 @@
+{{ if .IsHome }}
+    <!-- Home‑only stylesheet -->
+    {{ $css := resources.Get "spotify.css" | minify | fingerprint }}
+    <link rel="stylesheet"
+                href="{{ $css.RelPermalink }}"
+                integrity="{{ $css.Data.Integrity }}">
+                
+{{ end }}
