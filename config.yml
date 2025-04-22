@@ -51,6 +51,10 @@ params:
           url: "https://github.com/ferraridavide"
         - name: linkedin
           url: "https://www.linkedin.com/in/frrdavide/"
+        - name: email
+          url: "mailto:davideferrari.bns@gmail.com"
+        - name: key
+          url: /davideferrari.asc
         
   # for search
   # https://fusejs.io/api/options.html
@@ -71,6 +75,3 @@ menu:
     - name: Updates
       url: updates/
       weight: 20
-    - name: PGP
-      url: /davideferrari.asc
-      weight: 25
