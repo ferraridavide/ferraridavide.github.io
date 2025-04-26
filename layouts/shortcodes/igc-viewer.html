@@ -1,0 +1,34 @@
+{{ $igcFileSrc := .Get "track" }}
+{{ $id := .Get "id" }}
+{{ $css := resources.Get "igc-viewer.css" | minify | fingerprint }} 
+{{ $js := resources.Get "igc-viewer.js" | minify | fingerprint }}
+<link
+  rel="stylesheet"
+  href="{{ $css.RelPermalink }}"
+  integrity="{{ $css.Data.Integrity }}"
+/>
+<link
+  href="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Widgets/widgets.css"
+  rel="stylesheet"
+/>
+<script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
+
+<script
+  src="{{ $js.RelPermalink }}"
+  integrity="{{ $js.Data.Integrity }}"
+  defer
+></script>
+
+<script>
+  async function initializeViewer() {
+    
+      await window.initIgcViewer({
+        targetElementId: "{{ $id }}",
+        igcFileUrl: "{{ $igcFileSrc }}",
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", initializeViewer);
+</script>
+
+<div id="{{ $id }}"></div>

@@ -75,3 +75,6 @@ menu:
     - name: Updates
       url: updates/
       weight: 20
+    - name: Flying
+      url: flying/
+      weight: 25
