@@ -1,0 +1,67 @@
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  .carousel {
+    height: min(calc(100vw * 3 / 4), 50vh);
+    overflow: auto;
+    display: flex;
+    gap: 1rem;
+  }
+
+  @supports (view-timeline-axis: inline) {
+    .carousel {
+      margin-left: calc(50% - 50vw);
+      width: 100vw;
+      scroll-snap-type: x mandatory;
+    }
+
+    .carousel img {
+      view-timeline-name: --li-in-and-out-of-view;
+      view-timeline-axis: inline;
+
+      animation: linear rotate-cover both;
+      animation-timeline: --li-in-and-out-of-view;
+    }
+
+    .carousel img:first-child {
+      margin-left: calc(50%);
+    }
+
+    .carousel img:last-child {
+      margin-right: calc(50%);
+    }
+  }
+
+  .carousel img {
+    margin: 0;
+    border-radius: var(--radius);
+    object-fit: cover;
+    scroll-snap-align: center;
+  }
+
+  @keyframes rotate-cover {
+    0%,
+    35% {
+      filter: brightness(0.5);
+      transform: scale(0.8);
+    }
+    50% {
+      filter: brightness(1);
+      transform: scale(1);
+    }
+    65%,
+    100% {
+      filter: brightness(0.5);
+      transform: scale(0.8);
+    }
+  }
+</style>
+
+<div class="carousel">
+  {{ $array := split (.Get "data") "," }} {{ range $array }} {{ $image :=
+  $.Page.Resources.Get . }} {{ $resized := $image.Resize "x800 jpeg q75" }}
+  <img src="{{ $resized.RelPermalink }}" />
+  {{ end }}
+</div>

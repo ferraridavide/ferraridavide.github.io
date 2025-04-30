@@ -1,6 +1,7 @@
 .igc-viewer-container {
   width: 100%;
   margin: 0;
+  margin-bottom: var(--gap);
   padding: 0;
   overflow: hidden;
   position: relative;
@@ -27,7 +28,7 @@
   flex-direction: column;
 }
 
-.cesium-widget-credits img, a {
+.cesium-widget-credits img, .cesium-widget-credits a {
   margin: 0;
   padding:0 !important;
   box-shadow: none !important;
