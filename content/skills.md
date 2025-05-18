@@ -20,7 +20,7 @@ I have experience using Blazor to create modular single-page applications, I am 
 **OpenAPI Specification and NSwag**  
 I am familiar with the OpenAPI Specification (formerly known as Swagger) and have maintained a WCF service to OpenAPI conversion tool. I am able to design and document APIs using a standardized format, allowing for easy integration and consumption of APIs by external clients. My experience with the WCF service to OpenAPI conversion tool has allowed me to assist in the process of migrating existing APIs to the OpenAPI standard. I am also familiar with NSwag and similar tools that allow me to automatically generate client code for accessing APIs, saving time and effort in the development process.
 
-**Microsoft SQL Server**  
+**Microsoft SQL Server and T-SQL**  
 I have experience with Microsoft SQL Server and am proficient in SQL in general. I am able to write queries, stored procedures, and migrations. My experience with Microsoft SQL Server has allowed me to manage and analyze data stored in databases, perform data manipulation tasks, and design and implement database structures to support the needs of various applications.
 
 **Git**  

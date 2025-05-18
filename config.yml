@@ -69,18 +69,18 @@ params:
 
 menu:
   main:
-    - name: Skills
+    - name: Posts
       params:
-        icon: "📚"
-      url: skills/
-      weight: 15
-    - name: Updates
-      params:
-        icon: "📅"
-      url: updates/
-      weight: 20
+        icon: "📝"
+      url: /
+      weight: 1
     - name: Flying
       params:
         icon: "🪂"
       url: flying/
-      weight: 25
+      weight: 2
+    - name: Resume
+      params:
+        icon: "🧑‍💻"
+      url: resume/
+      weight: 3
