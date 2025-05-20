@@ -84,3 +84,13 @@ menu:
         icon: "🧑‍💻"
       url: resume/
       weight: 3
+    # - name: Bookmarks
+    #   params:
+    #     icon: "🔖"
+    #   url: https://raindrop.io/davideferrari/bookmarks-55302788/embed/hide=header%2Cadd
+    #   weight: 4
+    # - name: Updates
+    #   params:
+    #     icon: "🔄"
+    #   url: updates/
+    #   weight: 5

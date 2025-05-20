@@ -3,17 +3,21 @@ ShowBreadCrumbs: false
 ---
 
 <style>
+    .post-header {
+        display: none;
+    }
+
+    body>main.main {
+        max-width: calc(var(--nav-width) + var(--gap) * 2);
+    }
+
     .experience-title {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    @media (max-width: 425px) {
-        .experience-title {
-            flex-direction: column;
-        }
-    }
+    
 
     .experience-title span:last-child {
         white-space: nowrap;
@@ -22,30 +26,154 @@ ShowBreadCrumbs: false
     li {
         font-size: 1rem;
     }
+
+    .hand {
+        animation-name: wave-animation;
+        animation-duration: 2.5s;
+        animation-iteration-count: 1; /* Wave once on load */
+        transform-origin: 70% 70%;
+        display: inline-block;
+        user-select: none;
+        cursor: default;
+    }
+
+    .hand:hover {
+        animation-name: wave-animation;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite; /* Wave continuously on hover */
+    }
+
+    @keyframes wave-animation {
+        0% { transform: rotate(0.0deg) }
+        10% { transform: rotate(14.0deg) }
+        20% { transform: rotate(-8.0deg) }
+        30% { transform: rotate(14.0deg) }
+        40% { transform: rotate(-4.0deg) }
+        50% { transform: rotate(10.0deg) }
+        60% { transform: rotate(0.0deg) } /* Reset for the next iteration */
+        100% { transform: rotate(0.0deg) }
+    }
+
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+        float: right;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+        margin: 0;
+    }
+
+    .cta {
+        margin-top: 1rem;
+        padding: 9px 20px 10px;
+        border-radius: 24px;
+        background-color: var(--primary);
+        color: var(--entry);
+    }
+
+    .hero-content {
+       display: flex;
+         flex-direction: column;
+         align-items: start;
+    }
+
+    .quickly {
+        display: flex;
+        flex-direction: column;
+    }
+
+    details {
+        summary {
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 1px;
+            display: inline;
+            list-style: none;
+        }
+        summary::-webkit-details-marker {
+            display:none;
+        }
+    }
+
+    details[open] {
+        summary {
+            display: none;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .experience-title {
+            flex-direction: column;
+        }
+
+        .hero  {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+        .cta {
+            align-self: center;
+        }
+    }
+
+
 </style>
+
+
+<div class="hero">
+    <div class="hero-content">
+        <h1>Hi, I'm Davide <span class="hand">👋</span></h1>
+        <span>obsessed software dev with a messed up sleep cycle</span>
+        <a class="cta" href="mailto:davideferrari.bns@gmail.com"><span style="padding-right: 8px;">📫</span>Let's chat!</a>
+
+    </div>
+    <img src="/davide.jpg" alt="Davide's photo" class="profile-pic">
+</div>
+
+
+<h2 style="margin: 0px">In 60 seconds...</h2>
+<div class="quickly">
+    <span>👨‍💻 Software engineer with <a href="#maxidata">5 year working experience</a></span>
+    <span>🎓 Master's degree in Computer Engineering</span>
+    <span>📍 Based in <a href="https://www.google.it/maps?q=Pavia" target="_blank">Pavia</a>, near Milan</span>
+    <span>🚗 I have a driving license</span>
+    <span>🪂 I do <a href="/flying">paragliding</a></span>
+</div>
+
+
 
 <h2>Experience</h2>
 <div class="experience-title">
-    <span><b>Intern</b>, beSharp</span>
+    <span><b>Intern</b>, <a href="https://besharp.it/">beSharp</a></span>
     <span>Mar 2025 - Present</span>
 </div>
 <ul>
-    <li>Wrote master thesis on Landing Zone Builder</li>
+    <li>Writing master's thesis on Landing Zone Builder</li>
 </ul>
 
-<div class="experience-title">
-    <span><b>Full-stack developer</b>, Zucchetti (formerly Maxidata)</span>
+<div class="experience-title" id="maxidata">
+    <span><b>Full-Stack Developer</b>, <a href="https://www.zucchetti.it/">Zucchetti</a> (formerly Maxidata)</span>
     <span>Aug 2020 - Feb 2025</span>
-    
 </div>
 <ul>
-    <li>Developed and maintained uve2k.blue, an ERP software for wineries, working across frontend (WPF, Blazor) and backend (C#)</li>
-    <li>Led the development of a new Blazor WASM-based micro-frontend architecture, enabling modular and scalable web applications</li>
-    <li>Designed and implemented a custom high-performance grid component for large datasets, optimizing UI responsiveness</li>
+    <li>Developed and maintained uve2k.blue, an ERP software for wineries, working across frontend and backend</li>
     <li>Modernized backend APIs, migrating from SOAP to REST and improving consistency, pagination, and caching</li>
-    <li>Built Analyzer, a reporting and statistics module used for customer analytics and Power BI integration</li>
-    <li>Researched and prototyped AI-powered solutions to enhance internal processes and product features.</li>
-    <li>Read more at <a href="/posts/maxidata">My Time at Maxidata</a></li>
+    <li>Led the development of a new Blazor WASM-based micro-frontend architecture, enabling modular and scalable web applications</li>
+    <details>
+        <summary>Read more...</summary>
+        <li>Designed and implemented a custom high-performance grid component for large datasets, optimizing UI responsiveness</li>
+        <li>Built Analyzer, a reporting and statistics module used for customer analytics and Power BI integration</li>
+        <li>Researched and prototyped AI-powered solutions to enhance internal processes and product features.</li>
+        <li>Read more at <a href="/posts/maxidata">My Time at Maxidata</a></li>
+    </details>  
 </ul>
 
 <div class="experience-title">
@@ -78,22 +206,23 @@ ShowBreadCrumbs: false
     <li><b>Relevant coursework</b>: Computer Networks and Operating Systems, Object-Oriented Programming and Software Engineering, Databases, Algorithms and Data Structures, Fundamentals of Computer Science</li>
 </ul>
 
-<!-- redis2history -->
-<!-- altri progetti -->
+<h2>Projects</h2>
+<ul>
+    <li><a href="https://github.com/ferraridavide/sunomi">Sunomi</a>: A YouTube-like cloud-native video sharing platform built on AWS</li>
+    <li><a href="https://github.com/ferraridavide/ChatGPTPowerToys">ChatGPTPowerToys</a>: PowerToys Run plugin for launching ChatGPT queries in the browser (with +200 stars on GitHub! 🤩)</li>
+    <li><a href="https://github.com/ferraridavide/aca-project">aca-project</a>: Distributed path tracing with c-ray and MPI using tiling and sampling for scalable rendering</li>
+    <li><a href="https://github.com/ferraridavide/redis2history">redis2history</a>: Modular ETL pipeline tool developed as part of a bachelor's thesis</li>
+    <li><a href="https://github.com/ferraridavide/rubiks">rubiks</a>: Rubik's Cube solver using computer vision with ArUco markers and the Kociemba algorithm.</li>
+    <li><a href="https://github.com/ferraridavide/unipv-aule">unipv-aule</a>: A web app for checking the availability of university classrooms</li>
+</ul>
 
 <h2>Skills</h2>
 
 <ul>
     <li><b>Languages:</b> C#, Python, C++, JavaScript, TypeScript, HTML, CSS</li>
-    <li><b>Frameworks:</b> .NET Core, ASP.NET Core, Blazor WASM, React</li>
-    <li><b>Databases:</b> Microsoft SQL Server, Redis, MongoDB</li>
+    <li><b>Frameworks:</b> .NET Core, ASP.NET Core, Blazor WASM, React, Flutter</li>
+    <li><b>Databases:</b> Microsoft SQL Server, T-SQL, Redis, MongoDB, Neo4j</li>
     <li><b>Cloud:</b> Amazon Web Services (AWS)</li>
-    <li><b>Tools:</b> Git, Docker</li>
     <li><b>AI & Generative Tech:</b> LLMs, GraphRAG and knowledge graphs, model quantization, LangChain</li>
-</ul>
-
-<h2>Hobbies and activities</h2>
-<ul>
-    <li>Paragliding, see <a href="/flying">Flying</a></li>
-    <li>Spoke at an AWS User Group presenting Sunomi, <a href="/posts/sunomi">read more</a></li>
+    <li><b>And more:</b> Git, Docker, Microsoft IIS and URL Rewrite, PowerShell, Windows Server and Windows Registry</li>
 </ul>
