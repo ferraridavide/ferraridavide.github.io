@@ -7,6 +7,30 @@
   position: relative;
 }
 
+html:has(#igc-viewer-full-screen:checked){
+  overflow: hidden;
+}
+
+.igc-viewer-container:has(#igc-viewer-full-screen:checked)
+{
+position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.igc-viewer-container:has(#igc-viewer-full-screen:checked) > .cesium-container {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+
 .igc-viewer-container > .cesium-container {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -34,7 +58,7 @@
   box-shadow: none !important;
 }
 
-.igc-viewer-infobox {
+.igc-viewer-controls {
   position: absolute;
   top: 10px;
   right: 10px;

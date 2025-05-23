@@ -21,14 +21,24 @@
 
 <script>
   async function initializeViewer() {
-    
-      await window.initIgcViewer({
-        targetElementId: "{{ $id }}",
-        igcFileUrl: "{{ $igcFileSrc }}",
-      });
+    await window.initIgcViewer({
+      targetElementId: "{{ $id }}",
+      igcFileUrl: "{{ $igcFileSrc }}",
+    });
   }
 
   document.addEventListener("DOMContentLoaded", initializeViewer);
 </script>
 
-<div id="{{ $id }}"></div>
+<div id="{{ $id }}" class="igc-viewer-container">
+  <div class="cesium-container"></div>
+  <div class="igc-viewer-controls">
+    <label for="igc-viewer-full-screen">Fullscreen</label>
+    <input type="checkbox" id="igc-viewer-full-screen" />
+    <div class="igc-viewer-infobox">
+      Altitude: --- m<br />
+      Speed: --- km/h<br />
+      Distance: --- km
+    </div>
+  </div>
+</div>

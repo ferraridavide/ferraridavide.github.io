@@ -42,15 +42,6 @@ class IgcViewer {
   }
 
   initUI() {
-    this.containerElement.classList.add("igc-viewer-container");
-    this.containerElement.innerHTML = `
-            <div class="cesium-container"></div>
-            <div class="igc-viewer-infobox">
-                Altitude: --- m<br>
-                Speed: --- km/h<br>
-                Distance: --- km
-            </div>
-        `;
     this.cesiumContainer =
       this.containerElement.querySelector(".cesium-container");
     this.infoBox = this.containerElement.querySelector(".igc-viewer-infobox");

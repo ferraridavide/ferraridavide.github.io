@@ -25,7 +25,11 @@ We also laid the groundwork for the rest of the platform: a React/TypeScript fro
 
 ## Entering the Cloud: The IAM Houdini Puzzle
 
-When we finally got our AWS credits, it was like stepping into Willy Wonka's factory of cloud services – dazzling, overwhelming, and full of possibilities. Then we hit the chocolate river of IAM permissions, and the sugar rush turned into a sticky mess. IAM roles and policies became our first major hurdle. It felt like a never-ending puzzle, tweaking JSON policies, assigning roles, only to be met with "Access Denied" errors. After hours spent poring over documentation and Stack Overflow, our persistence paid off. Learning to navigate IAM, understanding the difference between users, roles, and policies, and figuring out who needed access to what became a fundamental skill we gained early on. It was frustrating, but incredibly valuable.
+When we finally got our AWS credits, it was like stepping into Willy Wonka's factory of cloud services – dazzling, overwhelming, and full of possibilities. 
+
+Then we hit the chocolate river of IAM permissions, and soon enough, the sugar rush turned into a sticky mess. 
+
+IAM roles and policies became our first major hurdle. It felt like a never-ending puzzle, tweaking JSON policies, assigning roles, only to be met with "Access Denied" errors. After hours spent poring over documentation and Stack Overflow, our persistence paid off. Learning to navigate IAM, understanding the difference between users, roles, and policies, and figuring out who needed access to what became a fundamental skill we gained early on. It was frustrating, but incredibly valuable.
 
 ## Embracing the Serverless Mindset
 
@@ -62,7 +66,7 @@ In our local Docker setup, the controller generated MinIO pre-signed URLs that w
 
 These moments, while stressful at the time, were invaluable learning experiences that forced us to dig deep and understand the underlying mechanisms.
 
-## More Than Just Code: The Power of Teamwork
+## More Than Just Code
 
 Building Sunomi wasn't just a technical exercise; it was a masterclass in teamwork and a highlight of my university experience. Those days spent side-by-side with a passionate and determined group, tackling problems, sharing laughs, and yes, pulling a few all-nighters, transformed this project into something far more meaningful than just a university assignment. It allowed us to experience aspects of university life that extend beyond textbooks and lectures, aspects I've rarely felt so strongly in other projects. It was a chance to truly bond over a shared challenge, build lasting connections, and see the direct impact of our collective effort.
 
@@ -70,7 +74,7 @@ Each of us brought different strengths to the table: Andrea's focus on infrastru
 
 We learned to leverage each other's skills, debate architectural decisions constructively, support one another through frustrating bugs and roadblocks, and maintain momentum even when things felt overwhelming. It was in those moments of shared struggle and eventual triumph that the true strength of our team became clear.
 
-## The Culmination: Sharing Our Story
+## Sharing Our Story
 
 ![Sunomi](images/final.jpg)
 
