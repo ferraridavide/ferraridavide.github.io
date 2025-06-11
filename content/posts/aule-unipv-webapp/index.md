@@ -7,7 +7,7 @@ cover:
   relative: true
 ---
 
-**Aule UniPV is now live at at [unipv.davide.im](https://unipv.davide.im/)!**
+**Aule UniPV is now live at [unipv.davide.im](https://unipv.davide.im/), check it out!**
 
 Since starting university, my class schedule has been all over the place, often leaving me with random gaps to fill. I’d end up wandering through the hallways of *Nave*, moving from building to building, trying to find an empty classroom where my friends and I could settle in.
 
