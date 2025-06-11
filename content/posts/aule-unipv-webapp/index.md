@@ -7,6 +7,8 @@ cover:
   relative: true
 ---
 
+**Aule UniPV is now live at at [unipv.davide.im](https://unipv.davide.im/)!**
+
 Since starting university, my class schedule has been all over the place, often leaving me with random gaps to fill. I’d end up wandering through the hallways of *Nave*, moving from building to building, trying to find an empty classroom where my friends and I could settle in.
 
 So when the Web Technologies course asked us to create a project for the final exam, I already knew what I wanted to build.
