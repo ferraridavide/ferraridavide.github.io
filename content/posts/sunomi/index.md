@@ -7,17 +7,17 @@ cover:
   relative: true
 ---
 
-Just a few months ago, AWS felt like a distant, complex universe. Today, I'm writing this having just presented our very own cloud-native video platform, Sunomi, at the [AWS User Group in Milan](https://www.meetup.com/awsusergroupmilano/events/306974692/). The journey from a university project concept to standing on that stage has been an incredible crash course in cloud computing, teamwork, and problem-solving.
+Just a few months ago, AWS felt like a distant, complex universe. Today, I'm writing this having just presented our very own cloud-native video platform, Sunomi, at the [AWS User Group in Milan](https://www.meetup.com/awsusergroupmilano/events/306974692/). The journey from a university project to standing on the stage has been an incredible crash course in cloud computing, teamwork, and problem-solving.
 
 It all started last September when Andrea, Federico, Alessandro, and I, fellow Computer Engineering Master's students at the University of Pavia, enrolled in the Cloud Computing course. The final project? Build something substantial on AWS. None of us had any significant prior experience with AWS, and frankly, the prospect was a little daunting. But the challenge was exciting.
 
-We knew we wanted to tackle something complex and real-world. A video sharing platform, mimicking core YouTube functionalities, seemed like the perfect fit. It involved user management, data storage, content processing (the tricky part!), and delivering it efficiently – all prime candidates for cloud solutions.
+We knew we wanted to work on something complex and real-world. A video sharing platform, mimicking core YouTube functionalities, seemed like the perfect fit. It involved user management, data storage, content processing (the tricky part!), and delivering it efficiently – all prime candidates for cloud solutions.
 
 ## The First Steps: Building Locally
 
 ![Local](images/local.jpg)
 
-Since we didn't yet have our AWS credits and were wary of accidentally racking up a massive bill (Alessandro's credit card is safe, thankfully!), we decided to start with a local proof of concept, simulating a cloud environment using Docker and Docker Compose.
+Since we didn't yet have our AWS credits and we didn't want to risk accidentally racking up a massive bill (Alessandro's credit card is safe, thankfully!), we decided to start with a local proof of concept, simulating a cloud environment using Docker and Docker Compose.
 
 Our initial focus was the transcoder – the heart of any video platform. This component takes an uploaded video and converts it into various resolutions and formats optimized for streaming, specifically using the HLS (HTTP Live Streaming) protocol. We built it in Python, leveraging FFmpeg through a wrapper library. To simulate cloud services, we used MinIO (an S3-compatible object storage) and RabbitMQ (for message queuing), allowing us to practice with libraries like `boto3` (the AWS SDK for Python) from day one, ensuring a smoother transition later. This local setup was crucial for rapid iteration and understanding the core video processing pipeline without the complexities and costs of the cloud initially.
 
