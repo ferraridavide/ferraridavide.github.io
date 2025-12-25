@@ -206,6 +206,7 @@ ShowBreadCrumbs: false
     --m: 8px;
     margin: calc((var(--size) * -1 * 8 / 600) + var(--m))
       calc((var(--size) * -1 * 47 / 600) + var(--m));
+    touch-action: none; /* Prevents scrolling when interacting with badge */
   }
 
   .certification-item img {
@@ -488,21 +489,27 @@ ShowBreadCrumbs: false
 
   document.querySelectorAll(".certification-item").forEach((center) => {
     const radial = center.querySelector(".radial");
+    const effects = center.querySelector(".effects");
     let pending = false;
+    let isPointerDown = false;
+    let startX = 0;
+    let startY = 0;
+    let hasMoved = false;
+    const moveThreshold = 10;
 
-    function updatePosition(e) {
+    function updatePosition(clientX, clientY) {
       if (pending) return;
       pending = true;
       requestAnimationFrame(() => {
         const rect = center.getBoundingClientRect();
-        const offsetX = e.clientX - rect.left - rect.width / 2;
-        const offsetY = e.clientY - rect.top - rect.height / 2;
+        const offsetX = clientX - rect.left - rect.width / 2;
+        const offsetY = clientY - rect.top - rect.height / 2;
         radial.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 
-        const normX = offsetX / (rect.width / 2); // -1 .. 1
-        const normY = offsetY / (rect.height / 2); // -1 .. 1
-        const rotY = normX * maxAngle; // rotateY (horizontal)
-        const rotX = -normY * maxAngle; // invert for natural tilt
+        const normX = offsetX / (rect.width / 2);
+        const normY = offsetY / (rect.height / 2);
+        const rotY = normX * maxAngle;
+        const rotX = -normY * maxAngle;
 
         center.style.transform = `perspective(700px) scale(1.05) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
         pending = false;
@@ -512,14 +519,63 @@ ShowBreadCrumbs: false
     function resetPosition() {
       radial.style.transform = "translate(0,0)";
       center.style.transform = "";
+      if (effects) effects.style.opacity = "";
     }
 
     function applyScale() {
       center.style.transform = "perspective(700px) scale(1.05)";
+      if (effects) effects.style.opacity = "var(--effect-opacity)";
     }
 
-    center.addEventListener("mouseenter", applyScale);
-    center.addEventListener("mousemove", updatePosition);
-    center.addEventListener("mouseleave", resetPosition);
+    // Unified pointer events (works for mouse, touch, and pen)
+    center.addEventListener("pointerenter", applyScale);
+    center.addEventListener("pointerleave", () => {
+      if (!isPointerDown) resetPosition();
+    });
+
+    center.addEventListener("pointerdown", (e) => {
+      isPointerDown = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      hasMoved = false;
+      center.setPointerCapture(e.pointerId);
+      applyScale();
+      updatePosition(e.clientX, e.clientY);
+    });
+
+    center.addEventListener("pointermove", (e) => {
+      if (!isPointerDown && e.pointerType === "mouse") {
+        updatePosition(e.clientX, e.clientY);
+        return;
+      }
+      if (!isPointerDown) return;
+
+      const deltaX = Math.abs(e.clientX - startX);
+      const deltaY = Math.abs(e.clientY - startY);
+
+      if (deltaX > moveThreshold || deltaY > moveThreshold) {
+        hasMoved = true;
+      }
+
+      updatePosition(e.clientX, e.clientY);
+    });
+
+    center.addEventListener("pointerup", (e) => {
+      isPointerDown = false;
+      center.releasePointerCapture(e.pointerId);
+      resetPosition();
+    });
+
+    center.addEventListener("pointercancel", (e) => {
+      isPointerDown = false;
+      resetPosition();
+    });
+
+    // Block click only if user dragged
+    center.addEventListener("click", (e) => {
+      if (hasMoved) {
+        e.preventDefault();
+      }
+    });
   });
 </script>
