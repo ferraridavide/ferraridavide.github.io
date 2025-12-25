@@ -3,179 +3,347 @@ ShowBreadCrumbs: false
 ---
 
 <style>
-    .post-header {
-        display: none;
-    }
+  .post-header {
+    display: none;
+  }
 
-    body>main.main {
-        max-width: calc(var(--nav-width) + var(--gap) * 2);
-    }
+  body > main.main {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+  }
 
+  .experience-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .experience-title span:last-child {
+    white-space: nowrap;
+  }
+
+  li {
+    font-size: 1rem;
+  }
+
+  .hand {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: 1; /* Wave once on load */
+    transform-origin: 70% 70%;
+    display: inline-block;
+    user-select: none;
+    cursor: default;
+  }
+
+  .hand:hover {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite; /* Wave continuously on hover */
+  }
+
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+    float: right;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    margin: 0;
+  }
+
+  .cta {
+    position: relative;
+    margin-top: 1rem;
+    padding: 9px 20px 10px;
+    border-radius: 24px;
+    background-color: var(--primary);
+    color: var(--entry);
+    print-color-adjust: exact;
+  }
+
+  .cta svg {
+    position: absolute;
+    width: 3rem;
+    top: 0;
+    right: 0;
+    transform: translateY(50%);
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+    opacity: 1;
+    transition: all 0.1s ease-in-out;
+    animation: svg-wiggle 5s infinite ease-in-out;
+  }
+
+  @keyframes svg-wiggle {
+    0% {
+      transform: translateY(50%) rotate(0deg) scale(1);
+    }
+    20% {
+      transform: translateY(48%) rotate(-3deg) scale(1.03);
+    }
+    40% {
+      transform: translateY(52%) rotate(2deg) scale(0.98);
+    }
+    60% {
+      transform: translateY(49%) rotate(-2deg) scale(1.01);
+    }
+    80% {
+      transform: translateY(51%) rotate(2deg) scale(1);
+    }
+    100% {
+      transform: translateY(50%) rotate(0deg) scale(1);
+    }
+  }
+
+  .cta:hover svg {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .quickly {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quick-fact {
+    display: flex;
+    align-items: flex-start;
+    word-break: break-word;
+    gap: 0.5rem;
+  }
+
+  details {
+    summary {
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 1px;
+      display: inline;
+      list-style: none;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  details[open] {
+    summary {
+      display: none;
+    }
+  }
+
+  @media (max-width: 425px) {
     .experience-title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    
-
-    .experience-title span:last-child {
-        white-space: nowrap;
-    }
-
-    li {
-        font-size: 1rem;
-    }
-
-    .hand {
-        animation-name: wave-animation;
-        animation-duration: 2.5s;
-        animation-iteration-count: 1; /* Wave once on load */
-        transform-origin: 70% 70%;
-        display: inline-block;
-        user-select: none;
-        cursor: default;
-    }
-
-    .hand:hover {
-        animation-name: wave-animation;
-        animation-duration: 2.5s;
-        animation-iteration-count: infinite; /* Wave continuously on hover */
-    }
-
-    @keyframes wave-animation {
-        0% { transform: rotate(0.0deg) }
-        10% { transform: rotate(14.0deg) }
-        20% { transform: rotate(-8.0deg) }
-        30% { transform: rotate(14.0deg) }
-        40% { transform: rotate(-4.0deg) }
-        50% { transform: rotate(10.0deg) }
-        60% { transform: rotate(0.0deg) } /* Reset for the next iteration */
-        100% { transform: rotate(0.0deg) }
-    }
-
-    .profile-pic {
-        width: 200px;
-        height: 200px;
-        float: right;
+      flex-direction: column;
     }
 
     .hero {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
+      flex-direction: column-reverse;
+      align-items: center;
     }
-
-    .hero h1 {
-        margin: 0;
-    }
-
     .cta {
-        position: relative;
-        margin-top: 1rem;
-        padding: 9px 20px 10px;
-        border-radius: 24px;
-        background-color: var(--primary);
-        color: var(--entry);
-        print-color-adjust: exact;
+      align-self: center;
     }
+  }
 
-    .cta svg {
-        position: absolute;
-        width: 3rem;
-        top: 0;
-        right: 0;
-        transform: translateY(50%);
-        filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
-        opacity: 1;
-        transition: all 0.1s ease-in-out;
-        animation: svg-wiggle 5s infinite ease-in-out;
+  .certs {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 500px) {
+    .certs {
+      justify-content: space-evenly;
     }
+  }
 
-    @keyframes svg-wiggle {
-        0% { transform: translateY(50%) rotate(0deg) scale(1); }
-        20% { transform: translateY(48%) rotate(-3deg) scale(1.03);}
-        40% { transform: translateY(52%) rotate(2deg) scale(0.98);}
-        60% { transform: translateY(49%) rotate(-2deg) scale(1.01);}
-        80% { transform: translateY(51%) rotate(2deg) scale(1);}
-        100% { transform: translateY(50%) rotate(0deg) scale(1);}
-    }
+  .certification-item {
+    box-shadow: unset !important;
+    --size: min(200px, 40vw);
+    width: var(--size);
+    height: var(--size);
+    position: relative;
+    transition: transform 100ms;
+    transform-style: preserve-3d;
+    --m: 8px;
+    margin: calc((var(--size) * -1 * 8 / 600) + var(--m))
+      calc((var(--size) * -1 * 47 / 600) + var(--m));
+  }
 
-    .cta:hover svg {
-        opacity: 0;
-        transform: translateY(40%);
-    }
+  .certification-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
 
-    .hero-content {
-       display: flex;
-         flex-direction: column;
-         align-items: start;
-    }
+  .holo {
+    z-index: 4;
+    opacity: 0.3;
+  }
 
-    .quickly {
-        display: flex;
-        flex-direction: column;
-    }
+  .certification-item .radial {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      50% 50%,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0.5) 43.6638%,
+      rgba(255, 255, 255, 0.11) 80.5409%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 1;
+    opacity: 0;
+    filter: blur(24px);
+    mix-blend-mode: overlay;
+    will-change: transform;
+    transition: transform opacity 150ms;
+    pointer-events: none;
+  }
 
-    .quick-fact {
-        display: flex;
-        align-items: flex-start;
-        word-break: break-word;
-        gap: 0.5rem;
-    }
+  .certification-item:hover .radial {
+    opacity: 1;
+  }
 
-    details {
-        summary {
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 1px;
-            display: inline;
-            list-style: none;
-        }
-        summary::-webkit-details-marker {
-            display:none;
-        }
-    }
+  .certification-item .linear {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      315deg,
+      rgb(19, 20, 21) 0%,
+      rgb(143, 163, 163) 6.03181%,
+      rgb(162, 163, 163) 9.74451%,
+      rgb(20, 20, 20) 25.0721%,
+      rgb(143, 163, 163) 33.5357%,
+      rgb(164, 166, 166) 35.2988%,
+      rgb(37, 37, 38) 41.503%,
+      rgb(161, 161, 161) 52.393%,
+      rgb(124, 125, 125) 61.1346%,
+      rgb(19, 20, 21) 66.269%,
+      rgb(166, 166, 166) 74.4633%,
+      rgb(163, 163, 163) 79.8987%,
+      rgb(19, 20, 21) 85.7299%,
+      rgb(161, 161, 161) 89.8948%,
+      rgb(19, 20, 21) 100%
+    );
+    mix-blend-mode: plus-lighter;
+    z-index: 2;
+    opacity: 0.5;
+  }
 
-    details[open] {
-        summary {
-            display: none;
-        }
-    }
+  .certification-item .linear-color {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgb(255, 119, 115) 2%,
+      rgb(255, 237, 95) 12.9661%,
+      rgb(168, 255, 95) 23.5922%,
+      rgb(131, 255, 247) 39.1029%,
+      rgb(119, 221, 223) 48.545%,
+      rgb(120, 148, 255) 59.1618%,
+      rgb(209, 124, 242) 62.9954%,
+      rgb(255, 119, 115) 76.7431%
+    );
+    mix-blend-mode: hue;
+    z-index: 3;
+    opacity: 0.5;
+  }
 
-    @media (max-width: 425px) {
-        .experience-title {
-            flex-direction: column;
-        }
+  .certification-item .effects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: color-dodge;
+    opacity: 0;
+    z-index: 5;
+    will-change: opacity;
+    transition: opacity 0.3s ease;
+    mask-image: url("/assets/overlay1.png");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+  }
 
-        .hero  {
-            flex-direction: column-reverse;
-            align-items: center;
-        }
-        .cta {
-            align-self: center;
-        }
-    }
+  .certification-item:hover .effects {
+    opacity: var(--effect-opacity);
+  }
 
-
+  .certification-item .rainbow {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(255, 0, 0) 0%,
+      rgb(255, 128, 0) 5%,
+      rgb(255, 255, 0) 10%,
+      rgb(0, 255, 0) 15%,
+      rgb(0, 255, 255) 20%,
+      rgb(0, 77, 255) 25%,
+      rgb(77, 0, 255) 30%,
+      rgb(255, 0, 255) 35%,
+      rgb(255, 0, 0) 40%
+    );
+    opacity: 1;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: exclusion;
+    position: absolute;
+  }
 </style>
 
-
 <div class="hero">
-    <div class="hero-content">
-        <h1>Hi, I'm Davide <span class="hand">👋</span></h1>
-        <span>obsessed software dev with a messed up sleep cycle</span>
+  <div class="hero-content">
+    <h1>Hi, I'm Davide <span class="hand">👋</span></h1>
+    <span>obsessed software dev with a messed up sleep cycle</span>
         <a class="cta" href="mailto:davideferrari.bns@gmail.com"><span style="padding-right: 8px;">📫</span>Let's chat!
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-<g>
-	<defs>
+        <g>
+          <defs>
 		<rect id="SVGID_1_" width="32" height="32"/>
-	</defs>
-	<clipPath id="SVGID_2_">
+          </defs>
+          <clipPath id="SVGID_2_">
 		<use xlink:href="#SVGID_1_" overflow="visible"/>
-	</clipPath>
+          </clipPath>
 	<path clip-path="url(#SVGID_2_)" fill="#FFFFFF" d="M11.3,20.4c-0.3-0.4-0.6-1.1-1.2-2c-0.3-0.5-1.2-1.5-1.5-1.9   c-0.2-0.4-0.2-0.6-0.1-1c0.1-0.6,0.7-1.1,1.4-1.1c0.5,0,1,0.4,1.4,0.7c0.2,0.2,0.5,0.6,0.7,0.8c0.2,0.2,0.2,0.3,0.4,0.5   c0.2,0.3,0.3,0.5,0.2,0.1c-0.1-0.5-0.2-1.3-0.4-2.1c-0.1-0.6-0.2-0.7-0.3-1.1c-0.1-0.5-0.2-0.8-0.3-1.3c-0.1-0.3-0.2-1.1-0.3-1.5   c-0.1-0.5-0.1-1.4,0.3-1.8c0.3-0.3,0.9-0.4,1.3-0.2c0.5,0.3,0.8,1,0.9,1.3c0.2,0.5,0.4,1.2,0.5,2c0.2,1,0.5,2.5,0.5,2.8   c0-0.4-0.1-1.1,0-1.5c0.1-0.3,0.3-0.7,0.7-0.8c0.3-0.1,0.6-0.1,0.9-0.1c0.3,0.1,0.6,0.3,0.8,0.5c0.4,0.6,0.4,1.9,0.4,1.8   c0.1-0.4,0.1-1.2,0.3-1.6c0.1-0.2,0.5-0.4,0.7-0.5c0.3-0.1,0.7-0.1,1,0c0.2,0,0.6,0.3,0.7,0.5c0.2,0.3,0.3,1.3,0.4,1.7   c0,0.1,0.1-0.4,0.3-0.7c0.4-0.6,1.8-0.8,1.9,0.6c0,0.7,0,0.6,0,1.1c0,0.5,0,0.8,0,1.2c0,0.4-0.1,1.3-0.2,1.7   c-0.1,0.3-0.4,1-0.7,1.4c0,0-1.1,1.2-1.2,1.8c-0.1,0.6-0.1,0.6-0.1,1c0,0.4,0.1,0.9,0.1,0.9s-0.8,0.1-1.2,0c-0.4-0.1-0.9-0.8-1-1.1   c-0.2-0.3-0.5-0.3-0.7,0c-0.2,0.4-0.7,1.1-1.1,1.1c-0.7,0.1-2.1,0-3.1,0c0,0,0.2-1-0.2-1.4c-0.3-0.3-0.8-0.8-1.1-1.1L11.3,20.4z"/>
 		<path clip-path="url(#SVGID_2_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" d="   M11.3,20.4c-0.3-0.4-0.6-1.1-1.2-2c-0.3-0.5-1.2-1.5-1.5-1.9c-0.2-0.4-0.2-0.6-0.1-1c0.1-0.6,0.7-1.1,1.4-1.1c0.5,0,1,0.4,1.4,0.7   c0.2,0.2,0.5,0.6,0.7,0.8c0.2,0.2,0.2,0.3,0.4,0.5c0.2,0.3,0.3,0.5,0.2,0.1c-0.1-0.5-0.2-1.3-0.4-2.1c-0.1-0.6-0.2-0.7-0.3-1.1   c-0.1-0.5-0.2-0.8-0.3-1.3c-0.1-0.3-0.2-1.1-0.3-1.5c-0.1-0.5-0.1-1.4,0.3-1.8c0.3-0.3,0.9-0.4,1.3-0.2c0.5,0.3,0.8,1,0.9,1.3   c0.2,0.5,0.4,1.2,0.5,2c0.2,1,0.5,2.5,0.5,2.8c0-0.4-0.1-1.1,0-1.5c0.1-0.3,0.3-0.7,0.7-0.8c0.3-0.1,0.6-0.1,0.9-0.1   c0.3,0.1,0.6,0.3,0.8,0.5c0.4,0.6,0.4,1.9,0.4,1.8c0.1-0.4,0.1-1.2,0.3-1.6c0.1-0.2,0.5-0.4,0.7-0.5c0.3-0.1,0.7-0.1,1,0   c0.2,0,0.6,0.3,0.7,0.5c0.2,0.3,0.3,1.3,0.4,1.7c0,0.1,0.1-0.4,0.3-0.7c0.4-0.6,1.8-0.8,1.9,0.6c0,0.7,0,0.6,0,1.1   c0,0.5,0,0.8,0,1.2c0,0.4-0.1,1.3-0.2,1.7c-0.1,0.3-0.4,1-0.7,1.4c0,0-1.1,1.2-1.2,1.8c-0.1,0.6-0.1,0.6-0.1,1   c0,0.4,0.1,0.9,0.1,0.9s-0.8,0.1-1.2,0c-0.4-0.1-0.9-0.8-1-1.1c-0.2-0.3-0.5-0.3-0.7,0c-0.2,0.4-0.7,1.1-1.1,1.1   c-0.7,0.1-2.1,0-3.1,0c0,0,0.2-1-0.2-1.4c-0.3-0.3-0.8-0.8-1.1-1.1L11.3,20.4z"/>
 		<line clip-path="url(#SVGID_2_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" x1="19.6" y1="20.7" x2="19.6" y2="17.3"/>
@@ -184,10 +352,9 @@ ShowBreadCrumbs: false
 </g>
 </svg></a>
 
-    </div>
-    <img src="/davide.jpg" alt="Davide's photo" class="profile-pic">
+  </div>
+  <img src="/davide.jpg" alt="Davide's photo" class="profile-pic" />
 </div>
-
 
 <h2 style="margin: 0px">In 60 seconds...</h2>
 <div class="quickly">
@@ -198,19 +365,17 @@ ShowBreadCrumbs: false
     <span class="quick-fact"><span>🪂</span><span>I do <a href="/flying">paragliding</a></span></span>
 </div>
 
-
-
 <h2>Experience</h2>
 <div class="experience-title">
-    <span><b>DevOps Engineer</b>, <a href="https://besharp.it/">beSharp</a></span>
-    <span>Nov 2025 - Present</span>
+  <span><b>DevOps Engineer</b>, <a href="https://besharp.it/">beSharp</a></span>
+  <span>Nov 2025 - Present</span>
 </div>
 <ul>
 </ul>
 
 <div class="experience-title">
-    <span><b>Intern</b>, <a href="https://besharp.it/">beSharp</a></span>
-    <span>Mar 2025 - Sep 2025</span>
+  <span><b>Intern</b>, <a href="https://besharp.it/">beSharp</a></span>
+  <span>Mar 2025 - Sep 2025</span>
 </div>
 <ul>
     <li>Worked on master's thesis: "Orchestration Strategies for Multi-Account AWS Environments: Design and Implementation of a CDKTF-based Landing Zone Builder"</li>
@@ -218,24 +383,24 @@ ShowBreadCrumbs: false
 
 <div class="experience-title" id="maxidata">
     <span><b>Full-Stack Developer</b>, <a href="https://www.zucchetti.it/">Zucchetti</a> (formerly Maxidata)</span>
-    <span>Aug 2020 - Feb 2025</span>
+  <span>Aug 2020 - Feb 2025</span>
 </div>
 <ul>
     <li>Developed and maintained uve2k.blue, an ERP software for wineries, working across frontend and backend</li>
     <li>Modernized backend APIs, migrating from SOAP to REST and improving consistency, pagination, and caching</li>
     <li>Led the development of a new Blazor WASM-based micro-frontend architecture, enabling modular and scalable web applications</li>
-    <details>
-        <summary>Read more...</summary>
+  <details>
+    <summary>Read more...</summary>
         <li>Designed and implemented a custom high-performance grid component for large datasets, optimizing UI responsiveness</li>
         <li>Built Analyzer, a reporting and statistics module used for customer analytics and Power BI integration</li>
         <li>Researched and prototyped AI-powered solutions to enhance internal processes and product features.</li>
-        <li>Read more at <a href="/posts/maxidata">My Time at Maxidata</a></li>
-    </details>  
+    <li>Read more at <a href="/posts/maxidata">My Time at Maxidata</a></li>
+  </details>
 </ul>
 
 <div class="experience-title">
-    <span><b>Freelance Software Developer</b>, Rodeco Group</span>
-    <span>2019 - 2020</span>
+  <span><b>Freelance Software Developer</b>, Rodeco Group</span>
+  <span>2019 - 2020</span>
 </div>
 <ul>
     <li>ROMAPMS - Desktop software for visualizing data related to the health of airport runway pavements and asphalt.</li>
@@ -246,8 +411,7 @@ ShowBreadCrumbs: false
 <h2>Education</h2>
 <div class="experience-title">
     <span><b>Master's degree in Computer Engineering</b><br>Università degli Studi di Pavia</span>
-    <span>2023 - 2025</span>
-    
+  <span>2023 - 2025</span>
 </div>
 
 <ul>
@@ -255,8 +419,7 @@ ShowBreadCrumbs: false
 </ul>
 <div class="experience-title">
     <span><b>Bachelor's degree in Electronic and Computer Engineering</b><br>Università degli Studi di Pavia</span>
-    <span>2019 - 2023</span>
-    
+  <span>2019 - 2023</span>
 </div>
 
 <ul>
@@ -276,11 +439,87 @@ ShowBreadCrumbs: false
 <h2>Skills</h2>
 
 <ul>
-    <li><b>Languages:</b> C#, Python, C++, JavaScript, TypeScript, HTML, CSS</li>
+  <li><b>Languages:</b> C#, Python, C++, JavaScript, TypeScript, HTML, CSS</li>
     <li><b>Frameworks:</b> .NET Core, ASP.NET Core, Entity Framework Core, Blazor WASM, React, Flutter, Node.js</li>
-    <li><b>Databases:</b> Microsoft SQL Server, T-SQL, Redis, MongoDB, Neo4j</li>
-    <li><b>Tools:</b> Grafana, Loki, Prometheus, RabbitMQ, OpenAPI</li>
-    <li><b>Cloud:</b> Amazon Web Services (AWS), Terraform, CloudFormation</li>
+  <li><b>Databases:</b> Microsoft SQL Server, T-SQL, Redis, MongoDB, Neo4j</li>
+  <li><b>Tools:</b> Grafana, Loki, Prometheus, RabbitMQ, OpenAPI</li>
+  <li><b>Cloud:</b> Amazon Web Services (AWS), Terraform, CloudFormation</li>
     <li><b>AI & Generative Tech:</b> LLMs, GraphRAG and knowledge graphs, model quantization, LangChain</li>
     <li><b>And more:</b> Git, Docker, Microsoft IIS and URL Rewrite, PowerShell, Windows Server and Windows Registry</li>
 </ul>
+
+<h2>Certifications</h2>
+<div class="certs">
+  <a
+    class="certification-item"
+    href="https://www.credly.com/badges/e3467b42-6987-4b34-97b2-068e91eb5c6d"
+    target="_blank"
+  >
+    <div class="effects" style="--effect-opacity: 0.2">
+      <div class="rainbow"></div>
+      <img src="/assets/overlay1.png" class="holo" draggable="false" />
+      <div class="linear-color"></div>
+      <div class="linear"></div>
+      <div class="radial"></div>
+    </div>
+
+    <img
+      src="https://images.credly.com/size/680x680/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png"
+      class="badge"
+      draggable="false"
+    />
+  </a>
+
+  <!-- <a class="certification-item">
+    <div class="effects" style="--effect-opacity: 0.5">
+      <div class="rainbow"></div>
+      <img src="/assets/Frame 1.png" class="holo" draggable="false" />
+      <div class="linear-color"></div>
+      <div class="linear"></div>
+      <div class="radial"></div>
+    </div>
+
+    <img src="/assets/solarc.png" class="badge" draggable="false" />
+  </a> -->
+</div>
+
+<script>
+  const maxAngle = 15;
+
+  document.querySelectorAll(".certification-item").forEach((center) => {
+    const radial = center.querySelector(".radial");
+    let pending = false;
+
+    function updatePosition(e) {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => {
+        const rect = center.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left - rect.width / 2;
+        const offsetY = e.clientY - rect.top - rect.height / 2;
+        radial.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
+        const normX = offsetX / (rect.width / 2); // -1 .. 1
+        const normY = offsetY / (rect.height / 2); // -1 .. 1
+        const rotY = normX * maxAngle; // rotateY (horizontal)
+        const rotX = -normY * maxAngle; // invert for natural tilt
+
+        center.style.transform = `perspective(700px) scale(1.05) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        pending = false;
+      });
+    }
+
+    function resetPosition() {
+      radial.style.transform = "translate(0,0)";
+      center.style.transform = "";
+    }
+
+    function applyScale() {
+      center.style.transform = "perspective(700px) scale(1.05)";
+    }
+
+    center.addEventListener("mouseenter", applyScale);
+    center.addEventListener("mousemove", updatePosition);
+    center.addEventListener("mouseleave", resetPosition);
+  });
+</script>
