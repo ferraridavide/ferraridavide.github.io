@@ -219,7 +219,10 @@ ShowBreadCrumbs: false
   .holo {
     z-index: 4;
     opacity: 0.3;
-  }
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+    transform: scale(1.4);
+  }   
 
   .certification-item .radial {
     position: absolute;
@@ -301,7 +304,7 @@ ShowBreadCrumbs: false
     z-index: 5;
     will-change: opacity;
     transition: opacity 0.3s ease;
-    mask-image: url("/assets/overlay1.png");
+    mask-image: url("/assets/badge.png");
     mask-size: contain;
     mask-repeat: no-repeat;
   }
@@ -458,14 +461,14 @@ ShowBreadCrumbs: false
   >
     <div class="effects" style="--effect-opacity: 0.2">
       <div class="rainbow"></div>
-      <img src="/assets/overlay1.png" class="holo" draggable="false" />
+      <img src="/assets/overlay.png" class="holo" draggable="false" />
       <div class="linear-color"></div>
       <div class="linear"></div>
       <div class="radial"></div>
     </div>
 
     <img
-      src="https://images.credly.com/size/680x680/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png"
+      src="/assets/badge.png"
       class="badge"
       draggable="false"
     />
@@ -486,10 +489,12 @@ ShowBreadCrumbs: false
 
 <script>
   const maxAngle = 15;
+  const holoParallaxStrength = 5; // pixels of movement for holo parallax
 
   document.querySelectorAll(".certification-item").forEach((center) => {
     const radial = center.querySelector(".radial");
     const effects = center.querySelector(".effects");
+    const holo = center.querySelector(".holo");
     let pending = false;
     let isPointerDown = false;
     let startX = 0;
@@ -512,6 +517,14 @@ ShowBreadCrumbs: false
         const rotX = -normY * maxAngle;
 
         center.style.transform = `perspective(700px) scale(1.05) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        
+        // Parallax effect for holo overlay - moves opposite to pointer for depth
+        if (holo) {
+          const holoX = -normX * holoParallaxStrength;
+          const holoY = -normY * holoParallaxStrength;
+          holo.style.transform = `scale(1.4) translate(${holoX}px, ${holoY}px)`;
+        }
+        
         pending = false;
       });
     }
@@ -520,6 +533,7 @@ ShowBreadCrumbs: false
       radial.style.transform = "translate(0,0)";
       center.style.transform = "";
       if (effects) effects.style.opacity = "";
+      if (holo) holo.style.transform = "scale(1.4)";
     }
 
     function applyScale() {
@@ -562,13 +576,24 @@ ShowBreadCrumbs: false
 
     center.addEventListener("pointerup", (e) => {
       isPointerDown = false;
-      center.releasePointerCapture(e.pointerId);
-      resetPosition();
+      if (center.hasPointerCapture(e.pointerId)) {
+        center.releasePointerCapture(e.pointerId);
+      }
+      // Force reset on pointer up for touch devices
+      requestAnimationFrame(() => {
+        resetPosition();
+      });
     });
 
     center.addEventListener("pointercancel", (e) => {
       isPointerDown = false;
-      resetPosition();
+      if (center.hasPointerCapture(e.pointerId)) {
+        center.releasePointerCapture(e.pointerId);
+      }
+      // Force reset on pointer cancel
+      requestAnimationFrame(() => {
+        resetPosition();
+      });
     });
 
     // Block click only if user dragged
