@@ -92,6 +92,7 @@
 .post-content figure,
 .post-content ul {
     margin-bottom: var(--content-gap);
+    text-align: justify;
 }
 
 .post-content ol,
