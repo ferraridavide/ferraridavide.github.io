@@ -94,3 +94,7 @@ menu:
     #     icon: "🔄"
     #   url: updates/
     #   weight: 5
+
+markup:
+  highlight:
+    style: github-dark
