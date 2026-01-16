@@ -1,41 +1,4 @@
 {{ if .IsHome }}
-
-<div id="now-playing" class="island hidden">
-    <!-- collapsed state -->
-    <div id="content-small" class="content content-small">
-      <div class="coverBlur" id="coverBlur"></div>
-      <span id="small-text">I'm&nbsp;currently&nbsp;listening:&nbsp;<strong>—</strong></span>
-    </div>
-  
-    <!-- expanded state -->
-    <div id="content-big" class="content content-big">
-      <a id="cover-link"  class="song-link cover-link" href="#" target="_blank" rel="noopener">
-        <div id="cover" class="cover"></div>
-      </a>
-  
-      <div class="track-info">
-        <a id="text-link" class="song-link text-link" href="#" target="_blank" rel="noopener">
-          <div id="title"  class="title">—</div>
-          <div id="artist" class="artist">—</div>
-        </a>
-  
-        <div class="timecodes">
-          <span id="current"  class="current">0:00</span>
-          <span id="duration" class="duration">0:00</span>
-        </div>
-  
-        <div class="progress-wrap">
-          <div id="progress" class="progress"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
-    {{ $js := resources.Get "spotify.js" | minify | fingerprint }}
-    <script src="{{ $js.RelPermalink }}"
-                    integrity="{{ $js.Data.Integrity }}"
-                    defer></script>
-                
-                
+{{ $js := resources.Get "spotify.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 {{ end }}

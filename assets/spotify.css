@@ -1,98 +1,88 @@
-/* CSS – only the .content-small and #small-text rules changed */
-:root{
-    --collapsed-w: min(calc(100% - 4rem), 300px);
-    --collapsed-h: 60px;
-    --expanded-w : min(calc(100% - 4rem), 800px);
-    --expanded-h : 104px;
-    --radius-collapsed: 30px;
-    --radius-expanded : 32px;
-    --t: .45s;
-    --easing: cubic-bezier(.4,0,.2,1);
-  }
-  
+/* Discrete Spotify Widget - Inline in home-info entry-content */
 
-  
-  .hidden{display:none !important;}
-  
-  .island{
-    position:fixed;
-    left:50%; bottom:2rem; transform:translateX(-50%);
-    width:var(--collapsed-w); height:var(--collapsed-h);
-    background:#000; color:#fff;
-    border-radius:var(--radius-collapsed);
-    overflow:hidden;
-    display:flex; justify-content:center; align-items:center;
-    transition:
-      width var(--t) var(--easing),
-      height var(--t) var(--easing),
-      border-radius var(--t) var(--easing);
-    user-select:none; -webkit-user-select:none; -ms-user-select:none;
-    border: 2px solid #535353;
-  }
-  .island:hover{
-    width:var(--expanded-w); height:var(--expanded-h);
-    border-radius:var(--radius-expanded);
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-  }
-  
-  .content{
-    position:absolute; inset:0;
-    display:flex; justify-content:center; align-items:center;
-    text-align:center; padding:1rem;
-    transition:
-      opacity calc(var(--t)*.6) ease,
-      filter  calc(var(--t)*.6) ease;
-  }
-  
-  /* —— FIX: lock width so text never re‑flows while shell widens —— */
-  .content-small{
-    font-size:.9rem; opacity:1; filter:blur(0);
-    width:100%;
-    left:50%; transform:translateX(-50%);
-  }
-  #small-text{
-    margin: 0px 16px;
-    display:inline-block;               /* needed for width to apply */
-    width:100%;
-    text-align:center;
-    white-space:nowrap;
-    overflow:hidden; text-overflow:ellipsis;
-  }
-  
-  .island:hover .content-small{opacity:0; filter:blur(8px);}
-  
-  .content-big{
-    visibility: collapsed;
-    opacity:0; filter:blur(8px);
-    flex-direction:row; gap:1rem; align-items:center;
-  }
-  .island:hover .content-big{
-    visibility: visible;
-    opacity:1; filter:blur(0); transition-delay:calc(var(--t)*.2);
-  }
-  
-  .cover{width:72px; height:72px; flex:none; border-radius:12px;
-         background-size:cover; background-position:center;}
-  .cover-link{display:inline-block;}
-  .coverBlur {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    position:absolute;
-    top:0;
-    z-index: -1;
-    filter: blur(32px);
-    
-  }
-  .track-info{flex:1 1 auto; display:flex; flex-direction:column; gap:.4rem;}
-  .text-link{display:flex; flex-direction:column; gap:.25rem;
-             text-decoration:none; color:inherit;}
-  .title{font-weight:600; font-size:1rem; line-height:1.2;}
-  .artist{font-size:.83rem; color:#ddd; line-height:1.2;}
-  
-  .timecodes{display:flex; justify-content:space-between;
-             font-size:.68rem; color:#bbb; line-height:1;}
-  .progress-wrap{width:100%; height:4px; border-radius:2px;
-                 background:rgba(255,255,255,.15); overflow:hidden;}
-  .progress{width:0%; height:100%; background:#fff; transform-origin:left;}
-  
+.spotify-inline {
+  display: none;
+  margin-top: 1rem;
+  /* padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--code-bg); */
+  /* font-size: 0.9rem; */
+  line-height: 1.5;
+}
+
+.spotify-inline.visible {
+  display: block;
+}
+
+.spotify-label {
+  color: var(--secondary);
+}
+
+.spotify-track {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.spotify-title {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.spotify-separator {
+  color: var(--secondary);
+}
+
+.spotify-artist {
+  color: var(--secondary);
+}
+
+.spotify-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.spotify-time {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  font-variant-numeric: tabular-nums;
+  min-width: 2.5em;
+}
+
+.spotify-time-current {
+  text-align: right;
+}
+
+.spotify-time-duration {
+  text-align: left;
+}
+
+.spotify-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.spotify-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 0.3s linear;
+}
+
+/* Link styling */
+.spotify-link {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.spotify-link:hover {
+  opacity: 0.7;
+}

@@ -1,72 +1,102 @@
-// JavaScript
+// Discrete Spotify Widget - Inline in home-info entry-content
 const ENDPOINT = 'https://spotify-now-playing.xthehacker2000x.workers.dev/';
-const widget    = document.getElementById('now-playing');
-const coverBlur     = document.getElementById('cover');
-const cover     = document.getElementById('coverBlur');
-const smallText = document.getElementById('small-text');
-const titleEl   = document.getElementById('title');
-const artistEl  = document.getElementById('artist');
-const currentEl = document.getElementById('current');
-const durationEl= document.getElementById('duration');
-const progressEl= document.getElementById('progress');
-const songLinks = document.querySelectorAll('.song-link');
 
+let widget = null;
 let progressTimer = null;
 
-/* helper: mm:ss */
-function fmt(ms){
-  const s=Math.floor(ms/1000), m=Math.floor(s/60);
-  return `${m}:${String(s%60).padStart(2,'0')}`;
+// Helper: format ms to mm:ss
+function fmt(ms) {
+  const s = Math.floor(ms / 1000);
+  const m = Math.floor(s / 60);
+  return `${m}:${String(s % 60).padStart(2, '0')}`;
 }
 
-/* poll & render */
-async function fetchNowPlaying(){
-  try{
-    const res  = await fetch(ENDPOINT,{cache:'no-cache'});
+// Create and inject the widget into the entry-content
+function createWidget() {
+  const entryContent = document.querySelector('.first-entry.home-info .entry-content');
+  if (!entryContent) return null;
+
+  const container = document.createElement('div');
+  container.id = 'spotify-inline';
+  container.className = 'spotify-inline';
+  container.innerHTML = `
+    <div class="spotify-label">Currently listening to:</div>
+    <a id="spotify-link" class="spotify-link" href="#" target="_blank" rel="noopener">
+      <div class="spotify-track">
+        <span id="spotify-title" class="spotify-title">—</span>
+        <span class="spotify-separator">—</span>
+        <span id="spotify-artist" class="spotify-artist">—</span>
+      </div>
+    </a>
+    <div class="spotify-progress-row">
+      <span id="spotify-current" class="spotify-time spotify-time-current">0:00</span>
+      <div class="spotify-progress-bar">
+        <div id="spotify-progress" class="spotify-progress-fill"></div>
+      </div>
+      <span id="spotify-duration" class="spotify-time spotify-time-duration">0:00</span>
+    </div>
+  `;
+
+  entryContent.appendChild(container);
+  return container;
+}
+
+// Poll & render
+async function fetchNowPlaying() {
+  try {
+    const res = await fetch(ENDPOINT, { cache: 'no-cache' });
     const data = await res.json();
 
-    // Case 1: nothing meaningful playing – hide widget
-    if(!data.title){
-      widget.classList.add('hidden');
+    // Create widget on first successful fetch with data
+    if (!widget) {
+      widget = createWidget();
+      if (!widget) {
+        // entry-content not found, retry later
+        setTimeout(fetchNowPlaying, 15000);
+        return;
+      }
+    }
+
+    // Case 1: nothing playing – hide widget
+    if (!data.title) {
+      widget.classList.remove('visible');
       clearInterval(progressTimer);
-      setTimeout(fetchNowPlaying,15_000);   // try again in 15 s
+      setTimeout(fetchNowPlaying, 15000);
       return;
     }
 
     // Case 2: track found – show & populate
-    widget.classList.remove('hidden');
-    smallText.innerHTML = `I'm&nbsp;currently&nbsp;listening:&nbsp;<strong>${data.title}</strong>`;
-    titleEl.textContent  = data.title;
-    artistEl.textContent = data.artists;
-    durationEl.textContent = fmt(data.duration_ms);
-    cover.style.backgroundImage = `url('${data.albumArt}')`;
-coverBlur.style.backgroundImage = `url('${data.albumArt}')`;
-    songLinks.forEach(link => link.href = data.url);
+    widget.classList.add('visible');
 
-    // progress handling
+    document.getElementById('spotify-title').textContent = data.title;
+    document.getElementById('spotify-artist').textContent = data.artists;
+    document.getElementById('spotify-duration').textContent = fmt(data.duration_ms);
+    document.getElementById('spotify-link').href = data.url;
+
+    // Progress handling
     clearInterval(progressTimer);
     const start = Date.now() - data.progress_ms;
-    const dur   = data.duration_ms;
+    const dur = data.duration_ms;
 
-    function tick(){
+    function tick() {
       const elapsed = Date.now() - start;
       const pct = Math.min(elapsed / dur, 1);
-      progressEl.style.width = `${pct*100}%`;
-      currentEl.textContent  = fmt(elapsed);
-      if(pct >= 1){
+      document.getElementById('spotify-progress').style.width = `${pct * 100}%`;
+      document.getElementById('spotify-current').textContent = fmt(elapsed);
+      if (pct >= 1) {
         clearInterval(progressTimer);
-        setTimeout(fetchNowPlaying, 3_000); // wait 3 s then refetch
+        setTimeout(fetchNowPlaying, 3000); // wait 3s then refetch
       }
     }
-    tick();                                // initial paint
-    progressTimer = setInterval(tick, 1_000);
-  }catch(err){
-    console.error(err);
-    widget.classList.add('hidden');
+    tick(); // initial paint
+    progressTimer = setInterval(tick, 1000);
+  } catch (err) {
+    console.error('Spotify widget error:', err);
+    if (widget) widget.classList.remove('visible');
     clearInterval(progressTimer);
-    setTimeout(fetchNowPlaying,30_000);
+    setTimeout(fetchNowPlaying, 30000);
   }
 }
 
-/* kick off */
+// Kick off
 fetchNowPlaying();
