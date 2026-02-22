@@ -84,11 +84,25 @@
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
+            updateGiscusTheme('light');
         } else {
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
+            updateGiscusTheme('dark');
         }
     })
+
+    function updateGiscusTheme(theme) {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        
+        const message = {
+            setConfig: {
+                theme: theme
+            }
+        };
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    }
 
 </script>
 {{- end }}
