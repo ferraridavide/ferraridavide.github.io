@@ -98,3 +98,9 @@ menu:
 markup:
   highlight:
     style: github-dark
+
+cascade:
+  params:
+    comments: true
+  target:
+    path: '{/posts/**,/flying/**}'

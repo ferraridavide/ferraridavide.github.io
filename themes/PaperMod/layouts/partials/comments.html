@@ -1,3 +1,22 @@
-{{- /* Comments area start */ -}}
-{{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
-{{- /* Comments area end */ -}}
+    <script>
+      const giscusTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+      
+      const script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.setAttribute('data-repo', 'ferraridavide/ferraridavide.github.io');
+      script.setAttribute('data-repo-id', 'R_kgDOHVpFpw');
+      script.setAttribute('data-category', 'General');
+      script.setAttribute('data-category-id', 'DIC_kwDOHVpFp84C1Evv');
+      script.setAttribute('data-mapping', 'og:title');
+      script.setAttribute('data-strict', '0');
+      script.setAttribute('data-reactions-enabled', '0');
+      script.setAttribute('data-emit-metadata', '0');
+      script.setAttribute('data-input-position', 'bottom');
+      script.setAttribute('data-theme', giscusTheme);
+      script.setAttribute('data-lang', 'en');
+      script.setAttribute('data-loading', 'lazy');
+      script.setAttribute('crossorigin', 'anonymous');
+      script.async = true;
+      
+      document.currentScript.parentNode.appendChild(script);
+    </script>

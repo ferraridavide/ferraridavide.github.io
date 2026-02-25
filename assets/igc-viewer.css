@@ -5,6 +5,7 @@
   padding: 0;
   overflow: hidden;
   position: relative;
+  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
 }
 
 html:has(#igc-viewer-full-screen:checked){
