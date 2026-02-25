@@ -5,6 +5,7 @@ tags: ["webapp", "react"]
 cover:
   image: images/hero.jpg
   relative: true
+description: "Aule UniPV is a web app that helps university students find empty classrooms at the University of Pavia. Built with React, TailwindCSS, Framer Motion, and Supabase."
 ---
 
 **Aule UniPV is now live at [unipv.davide.im](https://unipv.davide.im/), check it out!**

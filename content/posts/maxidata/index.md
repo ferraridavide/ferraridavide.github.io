@@ -5,6 +5,7 @@ publishDate: 2025-02-20T15:47:22Z
 cover:
   image: images/cover.jpg
   relative: true
+description: "A reflection on nearly five years as a software developer at Maxidata, working with React, Blazor, C#, and building enterprise solutions while balancing university studies."
 ---
 
 In the summer of 2020 I was wrapping up my first year of university. Like most of my classmates, I was still adjusting to this new environment and trying to find my way through classes and exams. It was a weird time—everything felt new, and on top of that, the world was in the middle of a global pandemic.

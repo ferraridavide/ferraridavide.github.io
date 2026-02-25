@@ -4,6 +4,7 @@ date: 2026-02-25T04:48:28Z
 cover:
   image: images/cover.jpg
   relative: true
+description: "Building a multi-agent AI system to automate cloud assessment documentation. Learn about agent design, role specialization, MCP servers, and context engineering for complex LLM workflows."
 ---
 
 I've been working on a project that aims to automate the research and drafting behind cloud assessment documents.

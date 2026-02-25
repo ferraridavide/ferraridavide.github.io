@@ -2,6 +2,7 @@
 title: "Using Python to automate text overlays in Premiere Pro"
 date: 2023-01-02T11:58:50Z
 tags: ["python", "automation", "premiere pro", "video editing"]
+description: "Automate text overlays and subtitles in Adobe Premiere Pro using Python, EDL exports, and SRT files. A step-by-step guide to programmatically add captions to your video projects."
 ---
 
 Recently, I embarked on a weekend project to create a video compilation of all the intros from the tech show TechLinked (which you can [check out here](https://www.youtube.com/watch?v=6gZ1TMZpnXw)). I figured it wouldn't be too hard and I wouldn't need to write any code, but as it turned out, I ended up having to resort to some Python to get the job done.

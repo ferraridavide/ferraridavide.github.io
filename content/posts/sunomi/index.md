@@ -5,6 +5,7 @@ publishDate: 2025-04-16T15:47:22Z
 cover:
   image: images/cover.jpg
   relative: true
+description: "Building Sunomi, a cloud-native video sharing platform on AWS. A journey from zero AWS experience to deploying a serverless video transcoding and streaming service using Lambda, ECS Fargate, and S3."
 ---
 
 Just a few months ago, AWS felt like a distant, complex universe. Today, I'm writing this having just presented our very own cloud-native video platform, Sunomi, at the [AWS User Group in Milan](https://www.meetup.com/awsusergroupmilano/events/306974692/). The journey from a university project to standing on the stage has been an incredible crash course in cloud computing, teamwork, and problem-solving.

@@ -2,6 +2,7 @@
 title: "Accessing Synology DSM internal databases and exporting Synology Photo albums"
 date: 2022-11-19T22:55:24Z
 tags: ["synology", "nas"]
+description: "Learn how to access Synology DSM's internal PostgreSQL databases and export Synology Photo albums programmatically using direct database queries."
 ---
 
 One of the reasons that lead me to finally get a Synology NAS was that i needed a simple and reliable way to solve the chaotic photo situation i had going on, all of my and my family’s photos were spread over multiple hard drives and other mediums, scattered in unorganized random folders, to put it simply, they were all over the place.

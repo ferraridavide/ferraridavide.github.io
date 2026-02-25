@@ -4,6 +4,7 @@ date: 2026-01-11T18:21:53Z
 cover:
   image: images/cover.jpg
   relative: true
+description: "Break free from Instagram's infinite scroll while staying connected with friends. Slowgram scrapes Instagram Stories using Playwright and serves them distraction-free on your own terms."
 ---
 
 I joined Instagram on May 7, 2011. Back then, it was a simple place. The good old days of slapping a "Nashville" filter on a blurry photo of your sandwich, posting it with a handful of hashtags, and scrolling through a chronological feed of square photos from a few friends are long over.

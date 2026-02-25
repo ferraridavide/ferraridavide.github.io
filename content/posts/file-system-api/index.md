@@ -4,6 +4,7 @@ date: 2026-01-15T18:21:53Z
 cover:
   image: images/cover.jpg
   relative: true
+description: "Discover why the File System API is underrated and how it enables powerful browser-based utility apps without requiring downloads or installations."
 ---
 
 The [File System API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API) is so underrated, why isn’t anyone building stuff with it? There's a whole bunch of small utility apps, the kind of freeware you'd normally download and install just to use once or twice, that could just live in your browser instead.
