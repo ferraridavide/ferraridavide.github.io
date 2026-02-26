@@ -18,7 +18,7 @@ params:
   title: Davide Ferrari
   description: "Davide Ferrari's personal portfolio website and blog"
   keywords: [Blog, Portfolio, Software, dotnet, Flutter]
-  images: ["https://avatars.githubusercontent.com/u/23432883"]
+  images: ["/davide.jpg"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
 

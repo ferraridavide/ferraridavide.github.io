@@ -1,0 +1,107 @@
+{{/*
+  Generate a thumbnail image for a page.
+  
+  Usage:
+    {{ $thumbnail := partial "generate-thumbnail" .Page }}
+    <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}">
+  
+  Returns: the generated image resource, or false if resources are missing.
+*/}}
+
+{{ $page := . }}
+
+{{/* 1. Get the resources from the assets directory */}}
+{{ $base := resources.Get "base.png" }}
+{{ $font := resources.Get "JetBrainsMono-Regular.ttf" }}
+{{ $fontBold := resources.Get "JetBrainsMono-Bold.ttf" }}
+
+{{ $result := false }}
+
+{{/* Check if base and font exist to prevent build errors */}}
+{{ if and $base $font }}
+
+  {{ $margin := 50 }}
+  {{ $leftWidth := sub (div $base.Width 2) $margin }}
+  {{ $startRight := div $base.Width 2 }}
+  {{ $leftCanvas := $base.Crop (printf "%dx%d TopLeft" $leftWidth $base.Height) }}
+  {{ $title := $page.Params.title | default "Untitled Article" }}
+
+  {{/* Calculate vertically centered Y position for the title */}}
+  {{ $fontSize := 46 }}
+  {{ $lineSpacing := 10 }}
+  {{ $charWidth := 28 }}
+  {{ $charsPerLine := div (sub $leftWidth $margin) $charWidth }}
+
+  {{/* Simulate word wrapping to count lines */}}
+  {{ $scratch := newScratch }}
+  {{ $scratch.Set "lines" 1 }}
+  {{ $scratch.Set "currentLen" 0 }}
+  {{ range split $title " " }}
+    {{ $wordLen := len . }}
+    {{ $currentLen := $scratch.Get "currentLen" }}
+    {{ if eq $currentLen 0 }}
+      {{ $scratch.Set "currentLen" $wordLen }}
+    {{ else }}
+      {{ $newLen := add $currentLen (add $wordLen 1) }}
+      {{ if gt $newLen $charsPerLine }}
+        {{ $scratch.Set "lines" (add ($scratch.Get "lines") 1) }}
+        {{ $scratch.Set "currentLen" $wordLen }}
+      {{ else }}
+        {{ $scratch.Set "currentLen" $newLen }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ $numLines := $scratch.Get "lines" }}
+  {{ $textBlockHeight := sub (mul $numLines (add $fontSize $lineSpacing)) $lineSpacing }}
+  {{ $titleY := div (sub $base.Height $textBlockHeight) 2 }}
+
+  {{/* Define the image filters using a slice for clean chaining */}}
+  {{ $leftFilters := slice
+
+    (images.Text "davide.im" (dict 
+      "color" "#000000" 
+      "size" 20 
+      "font" $font 
+      "x" $margin 
+      "y" $margin
+    ))
+
+    (images.Text $title (dict 
+      "color" "#000000" 
+      "size" $fontSize 
+      "linespacing" $lineSpacing 
+      "font" $fontBold
+      "x" $margin 
+      "y" $titleY
+    ))
+
+  }}
+
+  {{ $leftRendered := $leftCanvas.Filter $leftFilters }}
+  {{ $filters := slice (images.Overlay $leftRendered 0 0) }}
+
+  {{/* Overlay post cover image on the right half when available */}}
+  {{ with $page.Params.cover.image }}
+    {{ $coverPath := strings.TrimPrefix "/" . }}
+    {{ $coverRes := resources.Get $coverPath }}
+    {{ if $page.Params.cover.relative }}
+      {{ $coverRes = $page.Resources.GetMatch . }}
+    {{ end }}
+    {{ with $coverRes }}
+      {{ $rightHalf := .Resize (printf "0x%d" $base.Height) }}
+      {{ $filters = $filters | append (images.Overlay $rightHalf $startRight 0) }}
+    {{ end }}
+  {{ end }}
+
+  {{/* Apply the filters to the base image */}}
+  {{ $generated := $base.Filter $filters }}
+
+  {{/* Give the output a clean filename based on the page slug */}}
+  {{ $slug := "thumbnail" }}
+  {{ with $page.File }}{{ $slug = .ContentBaseName }}{{ end }}
+  {{ $result = resources.Copy (printf "thumbnails/%s.png" $slug) $generated }}
+
+{{ end }}
+
+{{ return $result }}
