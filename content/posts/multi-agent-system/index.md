@@ -172,6 +172,8 @@ First, the Chat Debug View (`>Developer: Show Chat Debug View` in the command pa
 
 Second, the Chat Export (`>Chat: Export Chat...`). This dumps the full session as a JSON file. The raw JSON isn't exactly readable, so I wrote a [small Python script](https://gist.github.com/ferraridavide/07e1e20ae4a644814997af41d6596816) to extract and format the important parts into something you can actually read through. Running that after a full assessment run is one of the quickest ways to understand what actually happened: where an agent went off-script, where a subagent produced something unexpected that silently propagated downstream, or where the system did something surprisingly good that you might want to reinforce.
 
+*(Update: As of  March 4, 2026, VS Code v1.110 added a dedicated [Agent Debug panel](https://code.visualstudio.com/updates/v1_110#_agent-debug-panel-preview), it looks much more detailed than the Chat Debug View I mentioned above. Haven't tried it yet, but it seems worth checking out.)*
+
 ## Where this leaves things
 
 The system works. Not perfectly, but well enough that I'm using it on real assessments now. The agents generate sections that need editing but rarely need full rewrites. They catch things I would've caught and sometimes things I would've missed. The quality isn't quite at "ship it unchanged," but it's getting close.
