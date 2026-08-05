@@ -23,8 +23,11 @@
 }
 
 .logo a {
+    font-family: Georgia, serif;
     font-size: 24px;
-    font-weight: 700;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .logo a img, .logo a svg {
@@ -37,7 +40,8 @@
 }
 
 button#theme-toggle {
-    font-size: 26px;
+    display: flex;
+    align-items: center;
     margin: auto 4px;
 }
 

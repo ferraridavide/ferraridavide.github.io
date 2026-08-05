@@ -7,22 +7,155 @@ ShowBreadCrumbs: false
     display: none;
   }
 
-  body > main.main {
-    max-width: calc(var(--nav-width) + var(--gap) * 2);
+  @media not all and (width <= 480px) {
+    li {
+        font-size: 16px;
+    }
+  }
+
+  .post-content {
+    font-family: "Inter", sans-serif;
+  }
+
+  .post-content h2 {
+    margin: 0;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--theme);
+  }
+
+  hr.wave {
+    background-color: var(--border);
+    width: 100%;
+    height: 8px;
+    -webkit-mask: var(--wave) repeat-x center / 22px 8px;
+    mask: var(--wave) repeat-x center / 22px 8px;
+    --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='8' viewBox='0 0 22 8'%3E%3Cpath d='M0 7 L11 1 L22 7' fill='none' stroke='currentColor' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+    border: 0;
+  }
+
+  hr.wave + h2 {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 1;
+    padding-block: 0.5rem;
+    background: var(--theme);
   }
 
   .experience-title {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    font-family: "Inter", sans-serif;
   }
 
-  .experience-title span:last-child {
-    white-space: nowrap;
+
+  .experience-title img {
+    display: inline-block;
+    height: 24px;
+    margin: 0 .25rem;
+  }
+
+  .experience-title > span:first-child {
+    color: var(--secondary);
+    font-size: .875rem;
+  }
+
+  .experience-title > span:last-child {
+    display: inline-flex;
+    white-space: pre-wrap;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .experience-company {
+    font-size: 0.875rem;
+  }
+
+  .experience-entry {
+    margin-block: 1rem;
+  }
+
+  .experience-entry ul {
+    margin-block: 0.5rem 0;
+  }
+
+  @media (max-width: 767px) {
+    .experience-entry .experience-title {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 1rem;
+      align-items: baseline;
+    }
+
+    .experience-entry .experience-title > span:first-child {
+      grid-column: 2;
+      grid-row: 1;
+      text-align: right;
+    }
+
+    .experience-entry .experience-details {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .experience-entry {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 6.5rem;
+      column-gap: 1rem;
+      margin-block: 0;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-entry .experience-title {
+      display: contents;
+    }
+
+    .experience-entry .experience-title > span:first-child {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      text-align: right;
+    }
+
+    .experience-entry .experience-details,
+    .experience-entry ul {
+      grid-column: 1;
+    }
+
+    .experience-entry .experience-title > .experience-details {
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-self: stretch;
+      text-align: left;
+    }
+
+    .experience-entry ul {
+      grid-row: 2;
+      margin: 0.5rem 0 0;
+      padding-left: 1rem;
+    }
+
+    .experience-entry--last {
+      border-bottom: 0;
+    }
   }
 
   li {
-    font-size: 1rem;
+    font-size: 14px;
+    color: var(--secondary);
   }
 
   .hand {
@@ -365,31 +498,38 @@ ShowBreadCrumbs: false
     <span class="quick-fact"><span>👨‍💻</span><span>Software engineer with <a href="#maxidata">5 year working experience</a></span></span>
     <span class="quick-fact"><span>🎓</span><span>Master's degree in Computer Engineering</span></span>
     <span class="quick-fact"><span>📍</span><span>Based in <a href="https://www.google.it/maps?q=Pavia" target="_blank">Pavia</a>, near Milan</span></span>
-    <span class="quick-fact"><span>🚗</span><span>I have a driving license</span></span>
     <span class="quick-fact"><span>🪂</span><span>I do <a href="/flying">paragliding</a></span></span>
 </div>
-
+<hr class="wave">
 <h2>Experience</h2>
-<div class="experience-title">
-  <span><b>DevOps Engineer</b>, <a href="https://besharp.it/">beSharp</a></span>
-  <span>Nov 2025 - Present</span>
+<div class="experience-entry">
+  <div class="experience-title">
+    <span>2025 - Now</span>
+    <span class="experience-details"><span class="experience-role"><b>DevOps Engineer</b></span><span class="experience-company"><a href="https://besharp.it/">beSharp</a></span></span>
+  </div>
+  <ul>
+    <!-- <li>Led the design and technical implementation of the company's first automated, multi-agent assessment system, later adopted across all infrastructure teams. Reduced assessment turnaround time by ~70%, and unlocked a new client acquisition strategy by enabling cost-effective assessments to be offered to prospective clients at no charge, increasing pipeline conversion through demonstrated value before contract signing.</li> -->
+    <li>Architected enterprise-grade cloud foundations using Terraform and AWS CDK, enforcing automated security compliance and achieving infrastructure availability for highly regulated clients.</li>
+    <li>Architected and executed the end-to-end migration of a large-scale on-premises data center fleet to AWS for a credit management and financial services company, modernizing the stack with managed services and cloud-native architecture</li>
+  </ul>
 </div>
-<ul>
-</ul>
 
-<div class="experience-title">
-  <span><b>Intern</b>, <a href="https://besharp.it/">beSharp</a></span>
-  <span>Mar 2025 - Sep 2025</span>
+<div class="experience-entry">
+  <div class="experience-title">
+    <span>2025</span>
+    <span class="experience-details"><span class="experience-role"><b>Intern</b></span><span class="experience-company"><a href="https://besharp.it/">beSharp</a></span></span>
+  </div>
+  <ul>
+      <li>Worked on master's thesis: "Orchestration Strategies for Multi-Account AWS Environments: Design and Implementation of a CDKTF-based Landing Zone Builder"</li>
+  </ul>
 </div>
-<ul>
-    <li>Worked on master's thesis: "Orchestration Strategies for Multi-Account AWS Environments: Design and Implementation of a CDKTF-based Landing Zone Builder"</li>
-</ul>
 
-<div class="experience-title" id="maxidata">
-    <span><b>Full-Stack Developer</b>, <a href="https://www.zucchetti.it/">Zucchetti</a> (formerly Maxidata)</span>
-  <span>Aug 2020 - Feb 2025</span>
-</div>
-<ul>
+<div class="experience-entry" id="maxidata">
+  <div class="experience-title">
+    <span>2020 - 2025</span>
+    <span class="experience-details"><span class="experience-role"><b>Full-Stack Developer</b></span><span class="experience-company"><a href="https://www.zucchetti.it/">Zucchetti</a> (formerly Maxidata)</span></span>
+  </div>
+  <ul>
     <li>Developed and maintained uve2k.blue, an ERP software for wineries, working across frontend and backend</li>
     <li>Modernized backend APIs, migrating from SOAP to REST and improving consistency, pagination, and caching</li>
     <li>Led the development of a new Blazor WASM-based micro-frontend architecture, enabling modular and scalable web applications</li>
@@ -400,31 +540,37 @@ ShowBreadCrumbs: false
         <li>Researched and prototyped AI-powered solutions to enhance internal processes and product features.</li>
     <li>Read more at <a href="/posts/maxidata">My Time at Maxidata</a></li>
   </details>
-</ul>
+      </ul>
+    </div>
 
-<div class="experience-title">
-  <span><b>Freelance Software Developer</b>, Rodeco Group</span>
-  <span>2019 - 2020</span>
+    <div class="experience-entry experience-entry--last">
+      <div class="experience-title">
+        <span>2019 - 2020</span>
+        <span class="experience-details"><span class="experience-role"><b>Freelance Software Developer</b></span><span class="experience-company">Rodeco Group</span></span>
+      </div>
+      <ul>
+          <li>ROMAPMS - Desktop software for visualizing data related to the health of airport runway pavements and asphalt.</li>
+          <li>Developed internal software used in vehicles for road pavement surveys to create georeferenced reports.</li>
+      </ul>
 </div>
-<ul>
-    <li>ROMAPMS - Desktop software for visualizing data related to the health of airport runway pavements and asphalt.</li>
-    <li>Developed internal software used in vehicles for road pavement surveys to create georeferenced reports.</li>
-</ul>
 
-
+<hr class="wave">
 <h2>Education</h2>
 <div class="experience-title">
-    <span><b>Master's degree in Computer Engineering</b><br>Università degli Studi di Pavia</span>
   <span>2023 - 2025</span>
+    <span><b>Master's degree in Computer Engineering</b></span>
+    <span>Università degli Studi di Pavia</span>
 </div>
 
 <ul>
     <li><b>Final Thesis:</b> Orchestration Strategies for Multi-Account AWS Environments: Design and Implementation of a CDKTF-based Landing Zone Builder</li>
+    <li><b>Grade:</b> 110/110 cum laude</li>
     <li><b>Relevant coursework:</b> Cloud Computing, Information Security, Advanced Computer Architecture, Computer Vision, Enterprise Digital Infrastructure, IoT Mobile Programming</li>
 </ul>
 <div class="experience-title">
-    <span><b>Bachelor's degree in Electronic and Computer Engineering</b><br>Università degli Studi di Pavia</span>
   <span>2019 - 2023</span>
+    <span><b>Bachelor's degree in Electronic and Computer Engineering</b></span>
+    <span>Università degli Studi di Pavia</span>
 </div>
 
 <ul>
@@ -432,16 +578,18 @@ ShowBreadCrumbs: false
     <li><b>Relevant coursework</b>: Computer Networks and Operating Systems, Object-Oriented Programming and Software Engineering, Databases, Algorithms and Data Structures, Fundamentals of Computer Science</li>
 </ul>
 
+<hr class="wave">
 <h2>Projects</h2>
 <ul>
     <li><a href="https://github.com/ferraridavide/sunomi">Sunomi</a>: A YouTube-like cloud-native video sharing platform built on AWS</li>
-    <li><a href="https://github.com/ferraridavide/ChatGPTPowerToys">ChatGPTPowerToys</a>: PowerToys Run plugin for launching ChatGPT queries in the browser (with +200 stars on GitHub! 🤩)</li>
+    <li><a href="https://github.com/ferraridavide/ChatGPTPowerToys">ChatGPTPowerToys</a>: PowerToys Run plugin for launching ChatGPT queries in the browser (with +250 stars on GitHub! 🤩)</li>
     <li><a href="https://github.com/ferraridavide/aca-project">aca-project</a>: Distributed path tracing with c-ray and MPI using tiling and sampling for scalable rendering</li>
     <li><a href="https://github.com/ferraridavide/redis2history">redis2history</a>: Modular ETL pipeline tool developed as part of a bachelor's thesis</li>
     <li><a href="https://github.com/ferraridavide/rubiks">rubiks</a>: Rubik's Cube solver using computer vision with ArUco markers and the Kociemba algorithm.</li>
     <li><a href="https://github.com/ferraridavide/unipv-aule">unipv-aule</a>: A web app for checking the availability of university classrooms</li>
 </ul>
 
+<hr class="wave">
 <h2>Skills</h2>
 
 <ul>
@@ -454,12 +602,14 @@ ShowBreadCrumbs: false
     <li><b>And more:</b> Git, Docker, Microsoft IIS and URL Rewrite, PowerShell, Windows Server and Windows Registry</li>
 </ul>
 
+<hr class="wave">
 <h2>Certifications</h2>
 <div class="certs">
   <a
     class="certification-item"
     href="https://www.credly.com/badges/e3467b42-6987-4b34-97b2-068e91eb5c6d"
     target="_blank"
+    alt="AWS Cloud Practitioner Foundational"
   >
     <div class="effects" style="--effect-opacity: 0.2">
       <div class="rainbow"></div>
@@ -480,6 +630,7 @@ ShowBreadCrumbs: false
     class="certification-item"
     href="https://www.credly.com/badges/ad9ecf61-e0d9-45d0-8d8e-478c886594dd"
     target="_blank"
+    alt="AWS Certified Solutions Architect - Associate"
   >
     <div class="effects" style="--effect-opacity: 0.2">
       <div class="rainbow"></div>
