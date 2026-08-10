@@ -1,44 +1,98 @@
-{{ $igcFileSrc := .Get "track" }}
-{{ $id := .Get "id" }}
-{{ $css := resources.Get "igc-viewer.css" | minify | fingerprint }} 
-{{ $js := resources.Get "igc-viewer.js" | minify | fingerprint }}
+{{- $track := .Get "track" -}} {{- $id := .Get "id" | default (printf "igc-viewer-%d" .Ordinal) -}}
+{{- $token := .Get "cesiumToken" | default .Site.Params.cesiumToken -}} {{- $label := .Get "label" |
+default "Flight replay" -}} {{- $css := resources.Get "igc-viewer.css" | minify | fingerprint -}}
+{{- $js := resources.Get "igc-viewer.js" | minify | fingerprint -}} {{- if not (.Page.Store.Get
+"volare-igc-viewer-assets") -}} {{- .Page.Store.Set "volare-igc-viewer-assets" true -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
 <link
   rel="stylesheet"
-  href="{{ $css.RelPermalink }}"
-  integrity="{{ $css.Data.Integrity }}"
+  href="https://cesium.com/downloads/cesiumjs/releases/1.142/Build/Cesium/Widgets/widgets.css"
 />
-<link
-  href="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Widgets/widgets.css"
-  rel="stylesheet"
-/>
-<script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
-
 <script
-  src="{{ $js.RelPermalink }}"
-  integrity="{{ $js.Data.Integrity }}"
+  src="https://cesium.com/downloads/cesiumjs/releases/1.142/Build/Cesium/Cesium.js"
   defer
 ></script>
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end -}}
 
-<script>
-  async function initializeViewer() {
-    await window.initIgcViewer({
-      targetElementId: "{{ $id }}",
-      igcFileUrl: "{{ $igcFileSrc }}",
-    });
-  }
+<figure
+  id="{{ $id }}"
+  class="igc-viewer"
+  data-igc-viewer
+  data-track="{{ $track }}"
+  data-token="{{ $token }}"
+  aria-label="{{ $label }}"
+>
+  <div class="igc-viewer__map" data-viewer-map></div>
 
-  document.addEventListener("DOMContentLoaded", initializeViewer);
-</script>
-
-<div id="{{ $id }}" class="igc-viewer-container">
-  <div class="cesium-container"></div>
-  <div class="igc-viewer-controls">
-    <label for="igc-viewer-full-screen">Fullscreen</label>
-    <input type="checkbox" id="igc-viewer-full-screen" />
-    <div class="igc-viewer-infobox">
-      Altitude: --- m<br />
-      Speed: --- km/h<br />
-      Distance: --- km
-    </div>
+  <div class="igc-viewer__loading" data-viewer-loading role="status">
+    <span class="igc-viewer__spinner" aria-hidden="true"></span>
+    <span data-viewer-status>Loading flight</span>
   </div>
-</div>
+
+  <button
+    class="igc-viewer__icon-button"
+    type="button"
+    data-viewer-fullscreen
+    aria-label="Enter fullscreen"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" />
+    </svg>
+  </button>
+
+  <dl class="igc-viewer__telemetry" aria-label="Flight telemetry">
+    <div>
+      <dt>Altitude</dt>
+      <dd data-viewer-altitude>—</dd>
+    </div>
+    <div>
+      <dt>Speed</dt>
+      <dd data-viewer-speed>—</dd>
+    </div>
+    <div>
+      <dt>Vario</dt>
+      <dd data-viewer-vario>—</dd>
+    </div>
+    <div>
+      <dt>Distance</dt>
+      <dd data-viewer-distance>—</dd>
+    </div>
+  </dl>
+
+  <div class="igc-viewer__timeline" data-viewer-controls hidden>
+    <button class="igc-viewer__play" type="button" data-viewer-play aria-label="Play flight">
+      <svg class="igc-viewer__play-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m9 7 8 5-8 5Z" />
+      </svg>
+      <svg class="igc-viewer__pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 7v10M15 7v10" />
+      </svg>
+    </button>
+    <span class="igc-viewer__time" data-viewer-current>0:00</span>
+    <div class="igc-viewer__scrubber-wrap">
+      <svg
+        class="igc-viewer__altitude"
+        viewBox="0 0 1000 80"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path data-viewer-altitude-path></path>
+      </svg>
+      <span class="igc-viewer__progress" data-viewer-progress></span>
+      <input
+        data-viewer-scrubber
+        type="range"
+        min="0"
+        max="1"
+        value="0"
+        step="0.1"
+        aria-label="Flight timeline"
+      />
+    </div>
+    <span class="igc-viewer__time igc-viewer__time--end" data-viewer-duration>0:00</span>
+  </div>
+
+  <div class="igc-viewer__error" data-viewer-error role="alert" hidden></div>
+  <div class="igc-viewer__credits" data-viewer-credits></div>
+</figure>
