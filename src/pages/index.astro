@@ -9,6 +9,7 @@ import PostItem from "../components/PostItem.astro";
 import CoverTooltip from "../components/CoverTooltip.astro";
 import sunomiCover from "../assets/sunomi.png";
 import atmosCover from "../assets/atmos.png";
+import abacusCover from "../assets/abacus.jpg";
 import volareCover from "../assets/volare.png";
 import chatgptpowertoysCover from "../assets/chatgptpowertoys.png";
 import smoltoolsCover from "../assets/smoltools.png";
@@ -103,6 +104,13 @@ const posts = await getPosts();
 
       <section class="flex flex-col gap-2" id="projects">
           <h1>Projects</h1>
+          <ProjectItem
+            name="Abacus"
+            desc="A self-hosted digital asset manager for images, GIFs, videos, and saved posts"
+            href="https://github.com/ferraridavide/abacus"
+            year="2026"
+            cover={abacusCover}
+          />
           <ProjectItem
             name="Volare"
             desc="A browser-based paragliding flight visualizer and cinematic video renderer"
