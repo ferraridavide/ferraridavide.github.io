@@ -10,6 +10,7 @@ import CoverTooltip from "../components/CoverTooltip.astro";
 import sunomiCover from "../assets/sunomi.png";
 import atmosCover from "../assets/atmos.png";
 import abacusCover from "../assets/abacus.jpg";
+import ragboxCover from "../assets/ragbox.jpg";
 import volareCover from "../assets/volare.png";
 import chatgptpowertoysCover from "../assets/chatgptpowertoys.png";
 import smoltoolsCover from "../assets/smoltools.png";
@@ -69,8 +70,7 @@ const posts = await getPosts();
           </div>
         </div>
         <p class="text-muted-foreground">
-          I'm a software engineer currently working in CloudOps. 
-          I like building reliable systems and figuring out how software works beneath the surface.
+          I like to design scalable systems that reach millions of users and build product experiences end-to-end, from UX design to cloud infrastructures.
           
           <br/><br/>Off the clock, I build <a href="#projects" class="text-link">side projects</a>, experiment with new tech, and occasionally <a href={`${import.meta.env.BASE_URL}flying`} class="text-link">launch myself off mountains</a>.
         </p>
@@ -105,9 +105,16 @@ const posts = await getPosts();
       <section class="flex flex-col gap-2" id="projects">
           <h1>Projects</h1>
           <ProjectItem
+            name="ragbox"
+            desc="It's RAG in a box, as easy as it gets!"
+            href="https://github.com/ferraridavide/ragbox"
+            year="2026"
+            cover={ragboxCover}
+          />
+          <ProjectItem
             name="Abacus"
             desc="A self-hosted digital asset manager for images, GIFs, videos, and saved posts"
-            href="https://github.com/ferraridavide/abacus"
+            href="https://davide.im/abacus"
             year="2026"
             cover={abacusCover}
           />
